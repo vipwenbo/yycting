@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 3 页 | Android | Ruikye</title>
+  <meta name="author" content="零雨の夜">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Ruikye"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="shortcut icon">
+  <link rel="alternate" href="/atom.xml" title="Ruikye" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="/img/favicon.ico" rel="icon" type="image/x-ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="nav-top">
+  <div class="alignleft main-title">
+  <h1><a href="/">Ruikye</a></h1>
+    <h2></h2>
+  </div>
+  <nav id="main-nav" class="alignright">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">存档</a></li>
+      
+      <li> <a href="/atom.xml">RSS</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title category">Android</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-30T08:43:47.000Z"><a href="/2014/08/30/androidstudio_so/">14/8月/242</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/30/androidstudio_so/">Android Studio 添加 lib*.so 文件</a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        
+        <blockquote>
+<p>Android Studio 是一个全新的 Android 开发环境，基于IntelliJ IDEA. 类似 Eclipse ADT，Android Studio 提供了集成的 Android 开发工具用于开发和调试，在IDEA的基础上，Android Studio 提供：  </p>
+<ol>
+<li>基于Gradle的构建支持  </li>
+<li>Android 专属的重构和快速修复  </li>
+<li>提示工具以捕获性能、可用性、版本兼容性等问题  </li>
+<li>支持 ProGuard 和应用签名  </li>
+<li>基于模板的向导来生成常用的 Andoid 应用设计和组件  </li>
+<li>功能强大的布局编辑器，可以让你拖拉 UI 控件并进行效果预览<br>——————— 百度百科</li>
+</ol>
+</blockquote>
+<p>Android Stuido 是Google发布的全新的 Android 开发工具，采用了新的 Gradle 构建系统，与 Eclipse 或者 Ant 方式的构建系统有很大区别。为了方便使用 Eclipse 的开发者迁移项目到 Android Studio，在最新的 Eclipse ADT 插件中提供了导出项目为 Gradle 的工具，使用方法：</p>
+<blockquote>
+<p>打开菜单: <code>File</code> -&gt; <code>Export</code>  </p>
+<p><img src="/img/export.png" alt="export">  </p>
+<p>然后选择要导出的项目，导出成功后会在项目的根目录下生成 build.gradle 文件，之后再用 Android Stuido 导入这个项目就完成了迁移</p>
+</blockquote>
+<p>尽管有 ADT 提供的插件方便迁移 Eclipse 项目，但是导出并不是很完美；因为 Android Studio 使用的是新的 Gradle 构建系统，对 JNI 的支持方式有所不同，按上面的方式导出的项目，打包时 *.so 文件不会自动的添加到 APK；下面来介绍 Android Studio 添加 *.so 的几种方式：</p>
+<h2 id="1-_使用_Android_Studio_建立的项目添加_*-so">1. 使用 Android Studio 建立的项目添加 *.so</h2>
+<p>如果直接使用 Android Studio 建立项目，项目结构与 Eclipse 建立的项目结构是不同的：</p>
+<blockquote>
+<ul>
+<li><em>[module_name]</em><ul>
+<li>············<em>[src]</em></li>
+<li>················<em>[main]</em></li>
+<li>····················<em>[jniLibs]</em> ———————- JNI 目录</li>
+<li>·····························<em>[armeabi]</em></li>
+<li>·····························<em>[armeabi-v7a]</em></li>
+<li>·····························<em>[x86]</em></li>
+<li>·····························<em>[mips]</em></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>使用 Android Studio 建立的项目，直接将 *.so 按上面的目录结构放置就可以了。</p>
+<blockquote>
+<p>示例项目：  </p>
+<p><img src="/img/jniLibsPath.png" alt="jnipath"></p>
+</blockquote>
+<p>代码调用：</p>
+<figure class="highlight java"><pre><div class="line">String libName = <span class="string">"helloNDK"</span>; <span class="comment">// the module name of the library, without .so</span></div><div class="line">System.loadLibrary( libName );</div></pre></figure>
+
+<h2 id="2-_编辑_build-gradle">2. 编辑 build.gradle</h2>
+<p>如果是使用的 Eclipse 导出的项目或者由于别的原因 *.so 必须放置在其他的目录，这时可以编辑 build.gradle 脚本，自定义 *.so 目录：</p>
+<ul>
+<li>方法一：</li>
+</ul>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">    <span class="comment">// .. android settings ..</span></div><div class="line">    sourceSets.main {</div><div class="line">      jniLibs.srcDir <span class="string">'src/main/myCppLibraries'</span> <span class="comment">// &lt;-- Set your folder here!</span></div><div class="line">    }</div><div class="line"> }</div></pre></figure>
+
+<ul>
+<li>方法二：</li>
+</ul>
+<figure class="highlight java"><pre><div class="line">task copyNativeLibs(type: Copy) {</div><div class="line">    from fileTree(dir: <span class="string">'libs'</span>, include: <span class="string">'**/*.so'</span> )  into  <span class="string">'build/native-libs'</span></div><div class="line">}</div><div class="line"></div><div class="line">tasks.withType(Compile) { compileTask -&gt; compileTask.dependsOn copyNativeLibs }</div><div class="line"></div><div class="line">clean.dependsOn <span class="string">'cleanCopyNativeLibs'</span></div><div class="line"></div><div class="line">tasks.withType(PackageApplication) { pkgTask -&gt;</div><div class="line">    pkgTask.jniFolders = <span class="keyword">new</span> HashSet()</div><div class="line">    pkgTask.jniFolders .add(<span class="keyword">new</span> File(projectDir, <span class="string">'build/native-libs'</span>))</div><div class="line">}</div></pre></figure>
+
+
+      
+    </div>
+    <footer>
+      
+  
+  <div class="categories">
+    <a href="/categories/Android/">Android</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Android/">Android</a>, <a href="/tags/Android-Studio/">Android Studio</a>
+  </div>
+
+        <div class="alignright">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  
+
+  <nav id="pagination">
+  
+    <a href="/categories/Android/page/2/" class="alignleft prev">上一页</a><br/>
+  
+  
+    <a href="/categories/Android/page/4/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="introduction">
+    <div align="center">
+        <img class="favicon" src="/img/favicon.gif" alt="Favicon" />
+        <h4>零雨の夜&nbsp;<img class="gender" src="/img/man.jpg" alt="男" /></h4>
+        <a href="http://github.com/rakkang"><img class="follow" src="/img/github.jpg" /></a>
+        <a href="http://weibo.com/rakkang/profile?rightmod=1&wvr=5&mod=personinfo"><img class="follow" src="/img/weibo.gif" /></a>
+        <a href="/atom.xml"><img class="follow" src="/img/rss_s.png" /></a>
+    </div>
+    <p>简介：目前就职于<a href="http://www.baidu.com">百度</a>，关注移动应用开发</p>
+    <p>Email：<a href="mailto:kang.ruikye@gmail.com">kang.ruikye@gmail.com</a></p>
+</div>
+
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:ruikye.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/01/18/python-study/">Python 学习笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/15/androidpendingintent/">Android PendingIntent 的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/31/github_domain/">Github 的域名绑定</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/yanhuayilen/">《烟花易冷》故事</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/java_random_serial/">Java 随机序列算法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_ndk/">使用 Android Studio 进行 NDK 开发</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_so/">Android Studio 添加 lib*.so 文件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/github-gist/">Github·Gist使用攻略</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/SublimeText-Plugins/">Sublime Text 推荐插件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/Hexo-搭建个人博客-·-进阶篇/">Hexo 搭建个人博客 · 进阶篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">Hexo 搭建个人博客 · 基础篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/Java-单例模式/">Java 单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/AsyncTask-的使用/">AsyncTask 的使用</a>
+      </li>
+    
+
+    
+      <li>
+        <a href="/all_article">&rsaquo;&rsaquo;&nbsp;更多文章...</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Android/">Android</a><small>4</small></li>
+  
+    <li><a href="/categories/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>1</small></li>
+  
+    <li><a href="/categories/Software/">Software</a><small>2</small></li>
+  
+    <li><a href="/categories/文字/">文字</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Studio/" style="font-size: 15.00px;">Android Studio</a><a href="/tags/Gist/" style="font-size: 10.00px;">Gist</a><a href="/tags/Github/" style="font-size: 15.00px;">Github</a><a href="/tags/Hexo/" style="font-size: 15.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Python/" style="font-size: 10.00px;">Python</a><a href="/tags/Sublime-Text/" style="font-size: 10.00px;">Sublime Text</a><a href="/tags/烟花易冷/" style="font-size: 10.00px;">烟花易冷</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div id="foot-nav">
+  <ul class="social">
+    
+      <li><a class="github" href="https://github.com/rakkang" title="github">github</a></li>
+    
+      <li><a class="rss" href="/atom.xml" title="rss">rss</a></li>
+    
+  </ul>
+</div>
+<div>
+  
+  &copy; 2015 零雨の夜 , Themes <a href="https://github.com/DaiXiang/hexo-theme-BsLight">BsLight</a>&nbsp;|&nbsp; 
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253165997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253165997' type='text/javascript'%3E%3C/script%3E"));</script>
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+  function navbar() {
+    var top = $('#nav-top').innerHeight();
+    $('#header').css('min-height', top);
+  }
+  navbar();
+  $(window).resize(navbar);
+</script>
+<div id="totop" class="footer-btn">
+  <a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script type="text/javascript">
+  $(function(){ 
+	// When to show the scroll link
+	// higher number = scroll link appears further down the page   
+	var upperLimit = 800;
+	
+	// Our scroll link element
+	var scrollElem = $('#totop');
+   
+	// Scroll to top speed
+	var scrollSpeed = 500;
+   
+	// Show and hide the scroll to top link based on scroll position   
+	scrollElem.hide();
+	$(window).scroll(function () {            
+		var scrollTop = $(document).scrollTop();       
+		if ( scrollTop > upperLimit ) {
+		  $(scrollElem).stop().fadeTo(300, 1); // fade back in
+		  $(scrollElem).animate({bottom: "50px"}, { queue: false, duration: 10 });
+		} else {
+		  $(scrollElem).stop().fadeTo(300, 0); // fade out
+	      $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+			
+		}
+	});
+
+	// Scroll to top animation on click
+	$(scrollElem).click(function(){
+	  $('html, body').animate({scrollTop:0}, scrollSpeed);
+	  $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+	  return false;
+	});
+  });
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ruikye"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</body>
+</html>

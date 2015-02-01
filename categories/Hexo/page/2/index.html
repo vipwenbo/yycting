@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 2 页 | Hexo | Ruikye</title>
+  <meta name="author" content="零雨の夜">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Ruikye"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="shortcut icon">
+  <link rel="alternate" href="/atom.xml" title="Ruikye" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="/img/favicon.ico" rel="icon" type="image/x-ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="nav-top">
+  <div class="alignleft main-title">
+  <h1><a href="/">Ruikye</a></h1>
+    <h2></h2>
+  </div>
+  <nav id="main-nav" class="alignright">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">存档</a></li>
+      
+      <li> <a href="/atom.xml">RSS</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title category">Hexo</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-29T14:35:13.000Z"><a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">14/8月/241</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">Hexo 搭建个人博客 · 基础篇</a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        
+        <p>最近 Github 在 IT 界是火得一踏糊涂，作为一个程序猿没听过 Github 真觉得 Out 了。本身 Github 是一个基于 git 版本控制系统的托管仓库，程序员可以在 Github 上托管代码，设计师可以在 Github 上协同创作等等各种方便。最近 Apple 为 IOS 发布了新的编程语言，北邮的几个学生就在 Github 上发起了协同翻译《The Swift Programming Language》英文版，项目地址：<a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese" target="_blank" rel="external">中文版 Apple 官方 Swift 教程</a>。</p>
+<p>同时，Github 为了更好的程序员介绍自己的项目，提供了 Pages 功能，Pages 功能就是为每个项目提供一种静态网页的描述方式，很多网友就利用 Pages 功能搭建了自己的个人博客，这篇文章就是介绍如何使用 Hexo 快速的在 Github 上搭建自己的个人博客。</p>
+<blockquote>
+<p>Github 的 Pages 功能是免费的，省去了直接搭建博客的服务器成本；但是也有一定的限制，免费用户空间上线是 300M, 只能建立静态的个人博客，如果要建立动态网站还是用 WordPress 比较靠谱</p>
+</blockquote>
+<p>本来自己搭建了一个基于 WordPress 的博客 <em>(<a href="http://k.awaysoft.com" target="_blank" rel="external">k.awaysoft.com</a>)</em>，由于个人喜欢用 Markdown 写文章，而 WordPress 本身是不支持 Markdown 的，所以每次发布文章各种麻烦，加上 WordPress 越做越臃肿，萌生了换个框架搭建博客的想法。好早听说了 Github 的 Pages 功能可以搭建博客，由于各种原因一直没动手；听朋友介绍 Hexo 不错，遂百度，发现 Hexo 是利用了 Github 的 Pages 功能，于是就有了这个博客的诞生，在搭建博客过程中积累点点经验，不敢独享，分享给大家。</p>
+<h2 id="工具介绍：">工具介绍：</h2>
+<h3 id="1-_Hexo">1. Hexo</h3>
+<p>Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 Github 和 Heroku上。作者是来自台湾的<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">@tommy351</a>。官方介绍：</p>
+<blockquote>
+<p>A fast, simple &amp; powerful blog framework, powered by Node.js.<br>基于 Node.js 的快速、简洁但功能强大的博客框架。</p>
+</blockquote>
+<p>Hexo 在 Gihub 上的主页是：<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">https://github.com/hexojs/hexo</a></p>
+<h3 id="2-_Node-js">2. Node.js</h3>
+<p>由于使用 Hexo 需要依赖 Node.js, 所以对此进行简单的介绍，直接引用百度百科的内容：</p>
+<blockquote>
+<p>Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台，用来方便地搭建快速的易于扩展的网络应用. Node.js 借助事件驱动，非阻塞 I/O 模型变得轻量和高效， 非常适合运行在分布式设备的数据密集型的实时应用. Node.js 对 Google V8 引擎(应用于 Google Chrome 浏览器)进行了封装.</p>
+</blockquote>
+<h3 id="3-_Github">3. Github</h3>
+<p>因为 Hexo 要将网站托管在 Github 上，也简单介绍下：</p>
+<blockquote>
+<p>Gist 是 Github 推出的基于 Git 的代码片段服务。用户可以提交自己的代码片段或任意的文本作，可以作为个人的代码管理库、文档管理库等。</p>
+</blockquote>
+<p>如果没有用过 Github, 先到 <a href="http://www.github.com" target="_blank" rel="external">http://www.github.com</a> 上去注册一个账户，托管博客要用到。</p>
+<h3 id="4-_Git">4. Git</h3>
+<p>Github 是 Git 的托管仓库，虽然用不到 Git 命令，但是 Hexo 也是依赖 Git 的。</p>
+<blockquote>
+<p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。[4]<br>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。<br>Torvalds 开始着手开发 Git 是为了作为一种过渡方案来替代 BitKeeper，后者之前一直是 Linux 内核开发人员在全球使用的主要源代码工具。</p>
+</blockquote>
+<p>如果使用 Windows 的童鞋，还请先到 <a href="http://git-scm.com/" target="_blank" rel="external">http://git-scm.com/</a> 下载 Git 客户端，Mac 本身自带 git, 用 Linux 的童鞋应该是比较专业的，就不介绍了。</p>
+<h2 id="搭建博客：">搭建博客：</h2>
+<p>在使用 Hexo 之前，请先安装 Node.js 以及 Git，Node.js 和 Git 都有安装包，可以到官网去下载：</p>
+<blockquote>
+<p>Node.js 官网：<a href="http://www.nodejs.org/" target="_blank" rel="external">http://www.nodejs.org/</a><br>Git 官网：<a href="http://git-scm.com" target="_blank" rel="external">http://git-scm.com</a></p>
+</blockquote>
+<p>另外说明下：因为手头只有一台 Mac，所以下面使用的命令都是在 Mac 终端的，如果使用 Windows 的话，Git 有个 <em>Git Bash</em> 的程序，是一个模拟的终端，可以执行一些命令。</p>
+<h3 id="1-_安装_Hexo">1. 安装 Hexo</h3>
+<p><strong>前提：必须先安装 Node.js！</strong> 打开终端，执行命令：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="variable">$ </span>npm install hexo -g</div></pre></figure>
+
+<p>Hexo 安装成功之后，在任意目录新建一个子目录并切换到这个目录，这就是本地的博客目录：</p>
+<figure class="highlight shell"><pre><div class="line">$ <span class="keyword">cd</span> ~</div><div class="line">$ <span class="built_in">mkdir</span> MyBlog</div><div class="line">$ <span class="keyword">cd</span> MyBlog</div></pre></figure>
+
+<p>初始化本地博客目录：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="variable">$ </span>hexo init</div><div class="line"><span class="variable">$ </span>npm install</div></pre></figure>
+
+<p>至此，本地的博客就搭建好了，是不是超简单 ^_^！<br>如果要本地查看博客，继续执行下面的命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo <span class="keyword">server</span>   <span class="comment">// 启动本地服务器</span></div></pre></figure>
+
+<p>然后打开浏览器，在地址栏输入：localhost:4000，你就可以喉嗨尚的看到你的博客了～～～</p>
+<blockquote>
+<p>按下快捷键：<code>CTRL + D</code> 可以退出本地服务器</p>
+</blockquote>
+<h2 id="托管博客到_Github">托管博客到 Github</h2>
+<p>尽管在本来浏览器中可已访问自己的博客了，但这仅仅只是一个单机版。如果要在整个互联网上发布直接的博客，需要有服务器托管，下面介绍如果托管直接的 Hexo 博客到 Github 上。</p>
+<p><strong>前提：需在 <a href="http://www.github.com" target="_blank" rel="external">Github</a> 上注册</strong>！</p>
+<p>登录 Github，创建已仓库(repositories), 名字为：<code>USERNAME</code>.github.io，如图：</p>
+<p><img src="/img/github_create.png" alt="github_create"></p>
+<p>仓库创建好之后，可以查看；如上图 <code>Your repositories</code> 对应的列表中点击 <em>rakkang.github.io</em> 可以打开仓库主页。要上传项目到仓库，还要在 Github 的 <code>Settings</code> 中添加自己的 SSH Key。</p>
+<p><img src="/img/github_sshkey.png" alt="github_sshkey"></p>
+<p>Github 仓库建好，设置项配置好之后，打开终端，进入博客目录：</p>
+<figure class="highlight shell"><pre><div class="line">$ <span class="built_in">cd</span> ~/MyBlog</div></pre></figure>
+
+<p>生成博客的静态网页，并部署到 Github:</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo generate <span class="comment">// 生成静态网页</span></div></pre></figure>
+
+<p>在部署之前，还要配置下 Hexo 的服务器地址，打开 <code>~/MyBlog/_config.yml</code> 在文件的最后面，找到并编辑以下的内容：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="preprocessor"># Deployment</span></div><div class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="title">deploy</span>:</div><div class="line">  <span class="typedef"><span class="keyword">type</span>: github    <span class="comment">------&gt; 直接填写 github</span></span></div><div class="line">  repository: https://github.com/rakkang/rakkang.github.io.git   <span class="comment">-----&gt; Github 的仓库地址</span></div><div class="line">  brach: master</div></pre></figure>
+
+<p>保存，在终端运行以下部署命令：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="variable">$ </span>hexo deploy</div></pre></figure>
+
+<blockquote>
+<p>Hexo 提供了简化的命令：</p>
+</blockquote>
+<figure class="highlight shell"><pre><div class="line">hexo g = hexo generate  <span class="comment">// 生成</span></div><div class="line">hexo d = hexo deploy    <span class="comment">// 部署</span></div><div class="line">hexo s = hexo <span class="keyword">server</span>    <span class="comment">// 运行服务器</span></div></pre></figure>
+
+<p>首次运行部署命令可能会报以下的错误：</p>
+<figure class="highlight"><pre><div class="line">Initialized empty Git repository <span class="keyword">in</span> /Users/kang/temp/.deploy/.git/</div><div class="line">*** Please tell <span class="keyword">me</span> who you are.</div><div class="line"></div><div class="line">Run</div><div class="line"></div><div class="line">  git config --<span class="keyword">global</span> user.email <span class="string">"you@example.com"</span></div><div class="line">  git config --<span class="keyword">global</span> user.name <span class="string">"Your Name"</span></div><div class="line"></div><div class="line"><span class="keyword">to</span> <span class="keyword">set</span> your account<span class="comment">'s default identity.</span></div><div class="line">Omit --<span class="keyword">global</span> <span class="keyword">to</span> <span class="keyword">set</span> the identity only <span class="keyword">in</span> this repository.</div><div class="line"></div><div class="line">fatal: unable <span class="keyword">to</span> <span class="keyword">auto</span>-detect email address (got <span class="comment">'kang@ruikye.(none)')</span></div></pre></figure>
+
+<p>这是因为没配置 Git 的提交用户信息，可以通过下面的命令配置：</p>
+<figure class="highlight shell"><pre><div class="line">$ git config user<span class="class">.email</span> <span class="attr_selector">[你的邮箱]</span></div><div class="line">$ git config user<span class="class">.name</span> <span class="attr_selector">[提交用户名]</span> <span class="comment">// 名字可以随便写</span></div></pre></figure>
+
+<p>配置后在运行部署命令，成功后会出现以下的信息：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="keyword">To</span> https:<span class="comment">//github.com/rakkang/rakkang.github.io.git</span></div><div class="line">   a796df0..<span class="number">4</span>d4cb79  master -&gt; master</div><div class="line">Branch master <span class="keyword">set</span> up <span class="keyword">to</span> track remote branch master <span class="keyword">from</span> https:<span class="comment">//github.com/rakkang/rakkang.github.io.git.</span></div><div class="line">[info] Deploy done: github</div></pre></figure>
+
+<p>部署后，在浏览器地址输入：<code>USERNAME</code>.github.io <em>(eg: <a href="http://rakkang.github.io" target="_blank" rel="external">rakkang.github.io</a>)</em> 就可以打开线上的博客了，至此部署完成。</p>
+<h2 id="写博客、发布文章">写博客、发布文章</h2>
+<p>新建一篇博客，执行下面的命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo <span class="built_in">new</span> <span class="built_in">post</span> <span class="string">"article title"</span></div></pre></figure>
+
+<p>这条命令会在你的博客目录的 source/_posts 下生成一个 article-title.md 的文件，用编辑器打开就可以编辑文章了。</p>
+<blockquote>
+<p>Hexo 使用的 Markdown 语法，这里推荐几种编写 Markdown 的编辑器：<br>Window: <a href="http://www.markdownpad.com/" target="_blank" rel="external">MarkdownPad2</a><br>Mac: <a href="http://www.mouapp.com/" target="_blank" rel="external">Mou</a><br>Linux: <a href="http://sourceforge.net/p/retext/home/ReText/" target="_blank" rel="external">ReText</a><br>个人推荐的方式是：Sublime Text + MarkdownEditting(插件)</p>
+</blockquote>
+<p>文章编辑好之后，运行生成、部署命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo g   <span class="comment">// 生成</span></div><div class="line">$ hexo d   <span class="comment">// 部署</span></div></pre></figure>
+
+<p>在浏览器中刷新博客，就可以看到，由于 Github 的缓存机制，可能要多刷新几次才能看到。</p>
+<blockquote>
+<p>如果要删除文章，直接删除 srouce/_post 下对应文章的文件夹，然后重新 <code>生成</code>、<code>部署</code> 就可以了。</p>
+</blockquote>
+<h2 id="参考：">参考：</h2>
+<p>【1】：<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">https://github.com/hexojs/hexo</a><br>【2】：<a href="http://zipperary.com/categories/hexo/" target="_blank" rel="external">http://zipperary.com/categories/hexo/</a></p>
+
+      
+    </div>
+    <footer>
+      
+  
+  <div class="categories">
+    <a href="/categories/Hexo/">Hexo</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+        <div class="alignright">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  
+
+  <nav id="pagination">
+  
+    <a href="/categories/Hexo/" class="alignleft prev">上一页</a><br/>
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="introduction">
+    <div align="center">
+        <img class="favicon" src="/img/favicon.gif" alt="Favicon" />
+        <h4>零雨の夜&nbsp;<img class="gender" src="/img/man.jpg" alt="男" /></h4>
+        <a href="http://github.com/rakkang"><img class="follow" src="/img/github.jpg" /></a>
+        <a href="http://weibo.com/rakkang/profile?rightmod=1&wvr=5&mod=personinfo"><img class="follow" src="/img/weibo.gif" /></a>
+        <a href="/atom.xml"><img class="follow" src="/img/rss_s.png" /></a>
+    </div>
+    <p>简介：目前就职于<a href="http://www.baidu.com">百度</a>，关注移动应用开发</p>
+    <p>Email：<a href="mailto:kang.ruikye@gmail.com">kang.ruikye@gmail.com</a></p>
+</div>
+
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:ruikye.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/01/18/python-study/">Python 学习笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/15/androidpendingintent/">Android PendingIntent 的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/31/github_domain/">Github 的域名绑定</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/yanhuayilen/">《烟花易冷》故事</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/java_random_serial/">Java 随机序列算法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_ndk/">使用 Android Studio 进行 NDK 开发</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_so/">Android Studio 添加 lib*.so 文件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/github-gist/">Github·Gist使用攻略</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/SublimeText-Plugins/">Sublime Text 推荐插件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/Hexo-搭建个人博客-·-进阶篇/">Hexo 搭建个人博客 · 进阶篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">Hexo 搭建个人博客 · 基础篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/Java-单例模式/">Java 单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/AsyncTask-的使用/">AsyncTask 的使用</a>
+      </li>
+    
+
+    
+      <li>
+        <a href="/all_article">&rsaquo;&rsaquo;&nbsp;更多文章...</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Android/">Android</a><small>4</small></li>
+  
+    <li><a href="/categories/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>1</small></li>
+  
+    <li><a href="/categories/Software/">Software</a><small>2</small></li>
+  
+    <li><a href="/categories/文字/">文字</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Studio/" style="font-size: 15.00px;">Android Studio</a><a href="/tags/Gist/" style="font-size: 10.00px;">Gist</a><a href="/tags/Github/" style="font-size: 15.00px;">Github</a><a href="/tags/Hexo/" style="font-size: 15.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Python/" style="font-size: 10.00px;">Python</a><a href="/tags/Sublime-Text/" style="font-size: 10.00px;">Sublime Text</a><a href="/tags/烟花易冷/" style="font-size: 10.00px;">烟花易冷</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div id="foot-nav">
+  <ul class="social">
+    
+      <li><a class="github" href="https://github.com/rakkang" title="github">github</a></li>
+    
+      <li><a class="rss" href="/atom.xml" title="rss">rss</a></li>
+    
+  </ul>
+</div>
+<div>
+  
+  &copy; 2015 零雨の夜 , Themes <a href="https://github.com/DaiXiang/hexo-theme-BsLight">BsLight</a>&nbsp;|&nbsp; 
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253165997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253165997' type='text/javascript'%3E%3C/script%3E"));</script>
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+  function navbar() {
+    var top = $('#nav-top').innerHeight();
+    $('#header').css('min-height', top);
+  }
+  navbar();
+  $(window).resize(navbar);
+</script>
+<div id="totop" class="footer-btn">
+  <a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script type="text/javascript">
+  $(function(){ 
+	// When to show the scroll link
+	// higher number = scroll link appears further down the page   
+	var upperLimit = 800;
+	
+	// Our scroll link element
+	var scrollElem = $('#totop');
+   
+	// Scroll to top speed
+	var scrollSpeed = 500;
+   
+	// Show and hide the scroll to top link based on scroll position   
+	scrollElem.hide();
+	$(window).scroll(function () {            
+		var scrollTop = $(document).scrollTop();       
+		if ( scrollTop > upperLimit ) {
+		  $(scrollElem).stop().fadeTo(300, 1); // fade back in
+		  $(scrollElem).animate({bottom: "50px"}, { queue: false, duration: 10 });
+		} else {
+		  $(scrollElem).stop().fadeTo(300, 0); // fade out
+	      $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+			
+		}
+	});
+
+	// Scroll to top animation on click
+	$(scrollElem).click(function(){
+	  $('html, body').animate({scrollTop:0}, scrollSpeed);
+	  $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+	  return false;
+	});
+  });
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ruikye"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</body>
+</html>

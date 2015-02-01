@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android | Ruikye</title>
+  <meta name="author" content="零雨の夜">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Ruikye"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="shortcut icon">
+  <link rel="alternate" href="/atom.xml" title="Ruikye" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="/img/favicon.ico" rel="icon" type="image/x-ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="nav-top">
+  <div class="alignleft main-title">
+  <h1><a href="/">Ruikye</a></h1>
+    <h2></h2>
+  </div>
+  <nav id="main-nav" class="alignright">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">存档</a></li>
+      
+      <li> <a href="/atom.xml">RSS</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title category">Android</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+        <div class="icon"></div>
+        <time datetime="2014-09-15T03:22:42.000Z"><a href="/2014/09/15/androidpendingintent/">14/9月/258</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/09/15/androidpendingintent/">Android PendingIntent 的使用</a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        
+        <p>PendingIntent 是 Android 提供的一种用于外部程序调起自身程序的能力，生命周期不与主程序相关。外部程序通过 PendingIntent 只能调用起三种组件：</p>
+<ul>
+<li><em>Activity</em></li>
+<li><em>Service</em></li>
+<li><em>Broadcast</em></li>
+</ul>
+<p>PendingIntent 的使用场景有三个：</p>
+<ul>
+<li>使用 AlarmManager 设定闹钟</li>
+<li>在系统状态栏显示 Notification</li>
+<li>在桌面显示 Widget</li>
+</ul>
+<p>PendingIntent 也只能通过下列的静态方法获取：</p>
+<figure class="highlight java"><pre><div class="line"><span class="comment">// 获取 Broadcast 关联的 PendingIntent</span></div><div class="line">PendingIntent.getBroadcast(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags)</div><div class="line"></div><div class="line"><span class="comment">// 获取 Activity 关联的 PendingIntent</span></div><div class="line">PendingIntent.getActivity(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags)</div><div class="line">PendingIntent.getActivity(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags, Bundle options)</div><div class="line"></div><div class="line"><span class="comment">// 获取 Service 关联的 PendingIntent</span></div><div class="line">PendingIntent.getService(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags)</div></pre></figure>
+
+<p>对于 PendingIntent，官方的描述是：</p>
+<blockquote>
+<p>A PendingIntent itself is simply a reference to a token maintained by the system describing the original data used to retrieve it. This means that, even if its owning application’s process is killed, the PendingIntent itself will remain usable from other processes that have been given it. If the creating application later re-retrieves the same kind of PendingIntent (same operation, same Intent action, data, categories, and components, and same flags), it will receive a PendingIntent representing the same token if that is still valid, and can thus call cancel() to remove it.</p>
+</blockquote>
+<p>PendingIntent 是系统对于待处理数据的一个引用，称之为：token；当主程序被 Killed 时，token 还是会继续存在的，可以继续供其他进程使用。如果要取消 PendingIntent，需要调用 PendingIntent 的 cancel 方法。</p>
+<p>对于 PendingIntent 容易误解的一点是：<br><code>如果创建了很多 PendingIntent，只要 extra 中的数据不同的话，以为就是两个不同的 PendingIntent</code> 这种理解是错误的！！</p>
+<p>正确区分不同 PendingIntent 有两种方法：</p>
+<ul>
+<li>PendingIntent.getXXX(…) 方法中的 requestCode 不同</li>
+<li>通过 <code>Intent.filterEquals</code> 测试时不相等</li>
+</ul>
+<p>关于 PendingIntent.getXXX(…) 方法中第四个参数 <code>flags</code>，在 PendingIntent 定义了四个比较常用的 FLAG：</p>
+<figure class="highlight java"><pre><div class="line"><span class="comment">//如果新请求的 PendingIntent 发现已经存在时，取消已存在的，用新的 PendingIntent 替换</span></div><div class="line"><span class="keyword">int</span> FLAG_CANCEL_CURRENT</div><div class="line"></div><div class="line"><span class="comment">//如果新请求的 PendingIntent 发现已经存在时，忽略新请求的，继续使用已存在的</span></div><div class="line"><span class="keyword">int</span> FLAG_NO_CREATE</div><div class="line"></div><div class="line"><span class="comment">//表示 PendingIntent 只能使用一次，如果已使用过，那么 getXXX(...) 将会返回 NULL</span></div><div class="line"><span class="keyword">int</span> FLAG_ONE_SHOT</div><div class="line"></div><div class="line"><span class="comment">//如果新请求的 PendingIntent 发现已经存在时, 如果 Intent 有字段改变了，这更新已存在的 PendingIntent</span></div><div class="line"><span class="keyword">int</span> FLAG_UPDATE_CURRENT</div></pre></figure>
+
+<p>除此之外，在官方的 doc 中还添加了一行注释：</p>
+<blockquote>
+<p><code>flags</code>: or any of the flags as supported by Intent.fillIn() to control which unspecified parts of the intent that can be supplied when the actual send happens.</p>
+</blockquote>
+<h2 id="参考">参考</h2>
+<p>【1】：<a href="http://developer.android.com/reference/android/app/PendingIntent.html" target="_blank" rel="external">http://developer.android.com/reference/android/app/PendingIntent.html</a></p>
+
+      
+    </div>
+    <footer>
+      
+  
+  <div class="categories">
+    <a href="/categories/Android/">Android</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Android/">Android</a>
+  </div>
+
+        <div class="alignright">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  
+
+  <nav id="pagination">
+  
+  
+    <a href="/categories/Android/page/2/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="introduction">
+    <div align="center">
+        <img class="favicon" src="/img/favicon.gif" alt="Favicon" />
+        <h4>零雨の夜&nbsp;<img class="gender" src="/img/man.jpg" alt="男" /></h4>
+        <a href="http://github.com/rakkang"><img class="follow" src="/img/github.jpg" /></a>
+        <a href="http://weibo.com/rakkang/profile?rightmod=1&wvr=5&mod=personinfo"><img class="follow" src="/img/weibo.gif" /></a>
+        <a href="/atom.xml"><img class="follow" src="/img/rss_s.png" /></a>
+    </div>
+    <p>简介：目前就职于<a href="http://www.baidu.com">百度</a>，关注移动应用开发</p>
+    <p>Email：<a href="mailto:kang.ruikye@gmail.com">kang.ruikye@gmail.com</a></p>
+</div>
+
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:ruikye.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/01/18/python-study/">Python 学习笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/15/androidpendingintent/">Android PendingIntent 的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/31/github_domain/">Github 的域名绑定</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/yanhuayilen/">《烟花易冷》故事</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/java_random_serial/">Java 随机序列算法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_ndk/">使用 Android Studio 进行 NDK 开发</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_so/">Android Studio 添加 lib*.so 文件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/github-gist/">Github·Gist使用攻略</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/SublimeText-Plugins/">Sublime Text 推荐插件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/Hexo-搭建个人博客-·-进阶篇/">Hexo 搭建个人博客 · 进阶篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">Hexo 搭建个人博客 · 基础篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/Java-单例模式/">Java 单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/AsyncTask-的使用/">AsyncTask 的使用</a>
+      </li>
+    
+
+    
+      <li>
+        <a href="/all_article">&rsaquo;&rsaquo;&nbsp;更多文章...</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Android/">Android</a><small>4</small></li>
+  
+    <li><a href="/categories/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>1</small></li>
+  
+    <li><a href="/categories/Software/">Software</a><small>2</small></li>
+  
+    <li><a href="/categories/文字/">文字</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Studio/" style="font-size: 15.00px;">Android Studio</a><a href="/tags/Gist/" style="font-size: 10.00px;">Gist</a><a href="/tags/Github/" style="font-size: 15.00px;">Github</a><a href="/tags/Hexo/" style="font-size: 15.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Python/" style="font-size: 10.00px;">Python</a><a href="/tags/Sublime-Text/" style="font-size: 10.00px;">Sublime Text</a><a href="/tags/烟花易冷/" style="font-size: 10.00px;">烟花易冷</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div id="foot-nav">
+  <ul class="social">
+    
+      <li><a class="github" href="https://github.com/rakkang" title="github">github</a></li>
+    
+      <li><a class="rss" href="/atom.xml" title="rss">rss</a></li>
+    
+  </ul>
+</div>
+<div>
+  
+  &copy; 2015 零雨の夜 , Themes <a href="https://github.com/DaiXiang/hexo-theme-BsLight">BsLight</a>&nbsp;|&nbsp; 
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253165997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253165997' type='text/javascript'%3E%3C/script%3E"));</script>
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+  function navbar() {
+    var top = $('#nav-top').innerHeight();
+    $('#header').css('min-height', top);
+  }
+  navbar();
+  $(window).resize(navbar);
+</script>
+<div id="totop" class="footer-btn">
+  <a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script type="text/javascript">
+  $(function(){ 
+	// When to show the scroll link
+	// higher number = scroll link appears further down the page   
+	var upperLimit = 800;
+	
+	// Our scroll link element
+	var scrollElem = $('#totop');
+   
+	// Scroll to top speed
+	var scrollSpeed = 500;
+   
+	// Show and hide the scroll to top link based on scroll position   
+	scrollElem.hide();
+	$(window).scroll(function () {            
+		var scrollTop = $(document).scrollTop();       
+		if ( scrollTop > upperLimit ) {
+		  $(scrollElem).stop().fadeTo(300, 1); // fade back in
+		  $(scrollElem).animate({bottom: "50px"}, { queue: false, duration: 10 });
+		} else {
+		  $(scrollElem).stop().fadeTo(300, 0); // fade out
+	      $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+			
+		}
+	});
+
+	// Scroll to top animation on click
+	$(scrollElem).click(function(){
+	  $('html, body').animate({scrollTop:0}, scrollSpeed);
+	  $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+	  return false;
+	});
+  });
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ruikye"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</body>
+</html>

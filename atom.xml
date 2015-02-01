@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Ruikye]]></title>
+  <subtitle><![CDATA[// ruikye's 个人博客]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://www.ruikye.com/"/>
+  <updated>2015-01-18T09:08:09.719Z</updated>
+  <id>http://www.ruikye.com/</id>
+  
+  <author>
+    <name><![CDATA[零雨の夜]]></name>
+    <email><![CDATA[kang.ruikye@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Python 学习笔记]]></title>
+    <link href="http://www.ruikye.com/2015/01/18/python-study/"/>
+    <id>http://www.ruikye.com/2015/01/18/python-study/</id>
+    <published>2015-01-18T08:25:08.000Z</published>
+    <updated>2015-01-18T09:01:36.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="1-_内置函数：">1. 内置函数：</h3>
+<ul>
+<li><p>dir(object)</p>
+<blockquote>
+<p>获取 <em>object</em> 的所有属性</p>
+</blockquote>
+</li>
+<li><p>help(object)</p>
+<blockquote>
+<p>获取 <em>object</em> 的帮助文档并附带解释说明</p>
+</blockquote>
+</li>
+<li><p>map(func, list)</p>
+<blockquote>
+<p>对 <em>list</em> 中得每个元素执行 <em>func</em> 函数并将结果列表返回</p>
+</blockquote>
+</li>
+<li><p>filter(func, list)</p>
+<blockquote>
+<p>对 <em>list</em> 中的每个元素执行 <em>func</em> 函数，如果列表元素执行 <em>func</em> 返回 True, 则添加到返回的列表中 </p>
+</blockquote>
+</li>
+<li><p>reduce(func, list)</p>
+<blockquote>
+<p><em>func</em> 要求是一个两个参数的函数，先将 <em>list</em> 中得 [0],[1]应用 <em>func</em> ,然后将得到的结果与 [3] 一起在应用 <em>func</em>，之后一次规则递归调用 </p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">reduce((<span class="keyword">lambda</span> x,y: x+y),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>])  <span class="comment"># 相当于：(((1+2)+5)+7)+9</span></div></pre></figure>
+
+<ul>
+<li>type(var)<blockquote>
+<p>返回变了 <em>var</em> 的类型 </p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">type(<span class="number">3</span>)  <span class="comment"># 结果：&lt;type, 'int'&gt;</span></div></pre></figure>
+
+<ul>
+<li>range(var<type 'int'="">)<blockquote>
+<p>返回一个 [0, 1, 2 … var-1] 的序列</p>
+</blockquote>
+</type></li>
+</ul>
+<figure class="highlight python"><pre><div class="line">rang(<span class="number">5</span>)  <span class="comment"># 结果：[0, 1, 2, 3, 4]</span></div></pre></figure>
+
+<ul>
+<li>enumerate(&lt;可便利对象&gt;)<blockquote>
+<p>返回的是一个包含两个元素的定值表(tuple)，两个元素分别赋予 index 和 value</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">S = <span class="string">'abcdefghijk'</span></div><div class="line"><span class="keyword">for</span> (index,char) <span class="keyword">in</span> enumerate(S):</div><div class="line">    <span class="keyword">print</span> index</div><div class="line">    <span class="keyword">print</span> char</div></pre></figure>
+
+<ul>
+<li>zip(list1, list2, …)<blockquote>
+<p>从多个等长的序列中，依次各取出一个元素。每次取出的(来自不同列表的)元素合成一个元组</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">ta = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">tb = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>]</div><div class="line">tc = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> (a,b,c) <span class="keyword">in</span> zip(ta,tb,tc):</div><div class="line">    print(a,b,c)</div></pre></figure>
+
+<h3 id="2-_数据结构：">2. 数据结构：</h3>
+<ul>
+<li>tuple(元组)</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">tupleA = (<span class="number">1</span>, <span class="string">'a'</span>, <span class="number">35</span>, [<span class="string">'a'</span>,<span class="number">3</span>])      <span class="comment"># tuple中得元素可以是不同的任意类型</span></div></pre></figure>
+
+
+
+<ul>
+<li>list(列表)</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">listA = [<span class="number">3</span>, <span class="string">'b'</span>, <span class="number">45</span>, [<span class="number">4</span>, <span class="string">'abc'</span>, <span class="number">4</span>]] <span class="comment"># list中得元素可以是不同的任意类型</span></div><div class="line"></div><div class="line"><span class="comment"># 常用方法</span></div><div class="line">listA.count(<span class="number">5</span>)             <span class="comment"># 计数，看总共有多少个5</span></div><div class="line">listA.index(<span class="number">3</span>)             <span class="comment"># 查询 nl 的第一个3的下标</span></div><div class="line">listA.append(<span class="number">6</span>)            <span class="comment"># 在 nl 的最后增添一个新元素6</span></div><div class="line">listA.sort()               <span class="comment"># 对nl的元素排序</span></div><div class="line">listA.pop()                <span class="comment"># 从nl中去除最后一个元素，并将该元素返回。</span></div><div class="line">listA.remove(<span class="number">2</span>)            <span class="comment"># 从nl中去除第一个2</span></div><div class="line">listA.insert(<span class="number">0</span>,<span class="number">9</span>)          <span class="comment"># 在下标为0的位置插入9</span></div><div class="line"><span class="keyword">del</span> listA[<span class="number">0</span>]               <span class="comment"># 删除下标为0的元素</span></div></pre></figure>
+
+<font color="ff0000">1. tuple和list的区别：一旦建立，tuple的各个元素不可再变更，而list的可以再变更<br>2. 字符串是一种特殊的元素</font>
+
+<h4 id="tuple_和_list_的引用方式：">tuple 和 list 的引用方式：</h4>
+<blockquote>
+<ol>
+<li><strong>下标引用，格式：s[下标]</strong> 如果下标<0,则为倒序索引<br></0,则为倒序索引<br></li>
+<li><strong>范围引用：格式：s[下限:上限:步长]</strong> 不包括上限元素本身</li>
+</ol>
+</blockquote>
+<figure class="highlight python"><pre><div class="line">s[:<span class="number">5</span>]         <span class="comment"># 从开始到下标为4的子列表</span></div><div class="line">s[<span class="number">2</span>:]         <span class="comment"># 从下标2到最后的子列表</span></div><div class="line">s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">2</span>]      <span class="comment"># 从下标0到下标4，每隔2取一个元素(下标为0，2，4的元素)</span></div><div class="line">s[<span class="number">2</span>:<span class="number">0</span>:-<span class="number">1</span>]     <span class="comment"># 从下标2到下标1</span></div></pre></figure>
+
+<ul>
+<li>dic(字典)</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">dic = {<span class="string">'key1'</span>:<span class="number">1</span>, <span class="string">'key2'</span>:<span class="string">'string'</span>, <span class="string">'key3'</span>:[<span class="number">5</span>, <span class="string">'abc'</span>]}</div><div class="line"></div><div class="line"><span class="comment"># 遍历</span></div><div class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic:</div><div class="line">    <span class="keyword">print</span> dic[key],<span class="string">' '</span></div><div class="line"><span class="comment"># 输出：[5, 'abc'] string 1</span></div><div class="line"></div><div class="line"><span class="comment"># 常用方法</span></div><div class="line">dic.keys()           <span class="comment"># 返回dic所有的键</span></div><div class="line">dic.values()         <span class="comment"># 返回dic所有的值</span></div><div class="line">dic.items()          <span class="comment"># 返回dic所有的元素（键值对）</span></div><div class="line">dic.clear()          <span class="comment"># 清空dic所有的元素（键值对）</span></div><div class="line"><span class="keyword">del</span> dic[<span class="string">'key1'</span>]      <span class="comment"># 删除 dic 的‘key1’元素</span></div></pre></figure>
+
+<h3 id="3-_面向对象：">3. 面向对象：</h3>
+<ul>
+<li>类的定义</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(self ...)</span>:</span> <span class="comment"># 方法的第一个参数必须是self</span></div><div class="line">  ...</div></pre></figure>
+
+<ul>
+<li>__init__方法<blockquote>
+<p>创建对象时，Python会自动调用 <em>__init__</em>,这个过程也叫初始化<br>添加类的属性，可以在__init__中设置</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span><span class="params">()</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.attr1 = []</div><div class="line">        self.attr2 = {}</div><div class="line">        self.attr3 = <span class="number">5</span></div></pre></figure>
+
+<ul>
+<li>对象的性质<br>通过 <em>self</em>.[attribute] 的方式可以给对象添加性质，性质是属于对象不是类共有的。</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_gender)</span>:</span></div><div class="line">        self.gender = input_gender</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printGender</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> self.gender</div><div class="line"></div><div class="line">li_lei = Human(<span class="string">'male'</span>)</div><div class="line"><span class="keyword">print</span> li_lei.gender</div><div class="line">li_lei.printGender()</div></pre></figure>
+
+<ul>
+<li>运算符是特殊方法</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="string">"+"</span>            <span class="comment">#对应 __add()__</span></div><div class="line"><span class="string">"-"</span>            <span class="comment">#对应 __sub()__</span></div></pre></figure>
+
+<h3 id="4-_文本文件的输入输出">4. 文本文件的输入输出</h3>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 使用</span></div><div class="line">f = open(<span class="string">'filename'</span>, <span class="string">'mode'</span>) <span class="comment"># MODE: 'r' 只读，‘w' 写入</span></div><div class="line"></div><div class="line"><span class="comment"># 常用方法</span></div><div class="line">f.read(N)                    <span class="comment"># 读取N bytes的数据</span></div><div class="line">f.readline()                 <span class="comment"># 读取一行</span></div><div class="line">f.readlines()                <span class="comment"># 读取所有行，储存在列表中，每个元素是一行。</span></div><div class="line">f.write(<span class="string">'I like apple'</span>)      <span class="comment"># 将'I like apple'写入文件</span></div><div class="line">f.close()                    <span class="comment"># 关闭文件</span></div></pre></figure>
+
+<h3 id="5-_模块(module)">5. 模块(module)</h3>
+<blockquote>
+<p>模块的作用是为了代码重用。在Python中，一个.py文件就构成一个模块。</p>
+</blockquote>
+<ul>
+<li>模块的导入：</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="keyword">import</span> moduleA             <span class="comment"># 普通导入方式，使用 moduleA 中的函数：moduleA.func()</span></div><div class="line"><span class="keyword">import</span> a <span class="keyword">as</span> moduleA        <span class="comment"># 导入模块moduleA，并将模块a重命名为b，使用：a.func()</span></div><div class="line"><span class="keyword">from</span> moduleA <span class="keyword">import</span> func   <span class="comment"># 从模块a中引入func, 可以直接使用func()</span></div><div class="line"><span class="keyword">from</span> moduleA <span class="keyword">import</span> *      <span class="comment"># 从模块a中引入所有对象</span></div></pre></figure>
+
+<ul>
+<li><p>搜索路径：<br>  Python会在以下路径中搜索它想要寻找的模块：</p>
+<ul>
+<li>程序所在的文件夹</li>
+<li>标准库的安装路径</li>
+<li><p>操作系统环境变量 $PYTHONPATH 所包含的路径</p>
+<p>自定义的模块或下载的模块，可以放在相应的路径，以便Python可以找到。</p>
+</li>
+</ul>
+</li>
+<li><p>模块包：</p>
+<blockquote>
+<p>将很多模块模块放在同一个文件夹（比如：dir）中，构成一个模块包。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="keyword">import</span> dir.module     <span class="comment"># 导入 dir 模块包中得 module 模块</span></div></pre></figure>
+
+<pre><code>模块包中必须包含一个<span class="command">\_</span><span class="command">\_</span>init<span class="command">\_</span><span class="command">\_</span>.py的文件，标记该文件夹为一个模块包。<span class="command">\_</span><span class="command">\_</span>init<span class="command">\_</span><span class="command">\_</span>.py可以是一个空文件。
+</code></pre><h3 id="6-_函数参数">6. 函数参数</h3>
+<ul>
+<li>按位置传递：</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,c)</span>:</span></div><div class="line">    <span class="keyword">return</span> a+b+c</div><div class="line"></div><div class="line">print(f(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))          <span class="comment"># 位置传递</span></div></pre></figure>
+
+<ul>
+<li>关键字传递：<blockquote>
+<p>关键字(keyword)传递是根据每个参数的名字传递参数</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,c)</span>:</span></div><div class="line">    <span class="keyword">return</span> a+b+c</div><div class="line"></div><div class="line">print(f(c=<span class="number">3</span>,b=<span class="number">2</span>,a=<span class="number">1</span>))    <span class="comment"># 关键字传递</span></div><div class="line">print(f(<span class="number">1</span>,c=<span class="number">3</span>,b=<span class="number">2</span>))      <span class="comment"># 位置和关键字混合传递，位置参数要在前面</span></div></pre></figure>
+
+<ul>
+<li>参数默认值：<blockquote>
+<p>定义函数的时候，可以给参数赋予默认值(default)。如果该参数最终没有被传递值，将使用该默认值</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,c=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="keyword">return</span> a+b+c</div><div class="line"></div><div class="line">print(f(<span class="number">3</span>,<span class="number">2</span>))            <span class="comment"># 参数 c 使用默认值</span></div><div class="line">print(f(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>))          <span class="comment"># 参数 c 不使用默认值</span></div></pre></figure>
+
+<ul>
+<li><p>包裹传递：</p>
+<blockquote>
+<p>在定义函数时，我们有时候并不知道调用的时候会传递多少个参数。这时候，包裹(packing)位置参数，或者包裹关键字参数，来进行参数传递</p>
+</blockquote>
+<ul>
+<li>包裹位置传递</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*name)</span>:</span></div><div class="line">    <span class="keyword">print</span> type(name)</div><div class="line">    <span class="keyword">print</span> name</div><div class="line"></div><div class="line"><span class="comment"># 在 func 的参数表中，所有的参数被name收集，根据位置合并成一个元组(tuple)</span></div><div class="line">func(<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>)</div><div class="line">func(<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</div></pre></figure>
+
+<pre><code>- 包裹关键字传递
+&gt;包裹传递的关键在于定义函数时，在相应元组或字典前加 \<span class="keyword">*</span> 或 \<span class="keyword">*</span>\<span class="keyword">*</span>。
+</code></pre><figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(**dict)</span>:</span></div><div class="line">    <span class="keyword">print</span> type(dict)</div><div class="line">    <span class="keyword">print</span> dict  </div><div class="line"></div><div class="line">func(a=<span class="number">1</span>,b=<span class="number">9</span>)</div><div class="line">func(m=<span class="number">2</span>,n=<span class="number">1</span>,c=<span class="number">11</span>)</div></pre></figure>
+
+<ul>
+<li>解包裹：<blockquote>
+<p>所谓的解包裹，就是在传递tuple(或dict)时，让tuple的每一个元素(或dict的每一个关键字)对应一个位置参数</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a,b,c)</span>:</span></div><div class="line">    <span class="keyword">print</span> a,b,c</div><div class="line"></div><div class="line">args = (<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>)</div><div class="line">func(*args)           <span class="comment"># 把元组 args 拆成分散的三个元素，分别传递给a,b,c</span></div><div class="line"></div><div class="line">dict = {<span class="string">'a'</span>:<span class="number">1</span>,<span class="string">'b'</span>:<span class="number">2</span>,<span class="string">'c'</span>:<span class="number">3</span>}</div><div class="line">func(**dict)          <span class="comment"># 让词典(dict)的每个键值对作为一个关键字传递给func</span></div></pre></figure>
+
+<ul>
+<li>混合<blockquote>
+<font color="FF0000">先位置，再关键字，再包裹位置，再包裹关键字</font>
+
+</blockquote>
+</li>
+</ul>
+<h3 id="7-_循环对象">7. 循环对象</h3>
+<blockquote>
+<p>循环对象是这样一个对象，它包含有一个 <strong>next()</strong> 方法(__next__()方法，在python 3x中)， 这个方法的目的是进行到下一个结果，而在结束一系列结果之后，举出 <strong>StopIteration</strong> 错误。</p>
+<font color="FF0000"><strong>循环对象和迭代器常常相互指代对方</strong></font>
+
+</blockquote>
+<figure class="highlight python"><pre><div class="line">f = open(<span class="string">'test.txt'</span>)</div><div class="line"><span class="keyword">print</span> f.next()   <span class="comment"># 输出第一行内容</span></div><div class="line"><span class="keyword">print</span> f.next()   <span class="comment"># 输出第二行内容</span></div><div class="line"></div><div class="line"><span class="comment"># 按行读取文本文件</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'test.txt'</span>):</div><div class="line">    <span class="keyword">print</span> line</div></pre></figure>
+
+<ul>
+<li>生成器：<blockquote>
+<p>生成器(generator)的主要目的是构成一个用户自定义的循环对象。</p>
+<p>生成器的编写方法和函数定义类似，只是在return的地方改为yield。生成器中可以有多个yield。当生成器遇到一个yield时，会暂停运行生成器，返回yield后面的值。当再次调用生成器的时候，会从刚才暂停的地方继续运行，直到下一个yield。生成器自身又构成一个循环器，每次循环使用一个yield返回的值。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 自定义生成器</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></div><div class="line">    a = <span class="number">100</span></div><div class="line">    <span class="keyword">yield</span> a         <span class="comment"># 第一次循环</span></div><div class="line">    a = a*<span class="number">8</span></div><div class="line">    <span class="keyword">yield</span> a         <span class="comment"># 第二次循环</span></div><div class="line">    <span class="keyword">yield</span> <span class="number">1000</span>      <span class="comment"># 第三次循环</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">        <span class="keyword">yield</span> i</div><div class="line"></div><div class="line"><span class="comment"># 简写方式</span></div><div class="line">G = (x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">4</span>))  <span class="comment"># 生成器表达式(Generator Expression)</span></div></pre></figure>
+
+<ul>
+<li>表推导：<blockquote>
+<p>表推导(list comprehension)是快速生成表的方法</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 生成列表 L</span></div><div class="line">L = []</div><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">    L.append(x**<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 使用表推导生成列表 L</span></div><div class="line">L = [x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</div></pre></figure>
+
+<h3 id="8-_异常处理">8. 异常处理</h3>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 捕捉异常格式</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    ...</div><div class="line"><span class="keyword">except</span> exception1:</div><div class="line">    ...</div><div class="line"><span class="keyword">except</span> exception2:</div><div class="line">    ...</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    ...</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    ...</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    ...</div></pre></figure>
+
+<blockquote>
+<font color="FF0000"><strong>try -&gt; 异常 -&gt; except -&gt; finally<br>try -&gt; 无异常 -&gt; else -&gt; finally</strong></font>
+
+</blockquote>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 抛出异常格式</span></div><div class="line"><span class="keyword">print</span> <span class="string">'Lalala'</span></div><div class="line"><span class="keyword">raise</span> StopIteration</div><div class="line"><span class="keyword">print</span> <span class="string">'Hahaha'</span></div></pre></figure>
+
+<h1 id="Python_标准库">Python 标准库</h1>
+<h3 id="1-_Python增强：">1. Python增强：</h3>
+<ul>
+<li><p>文字处理</p>
+<ul>
+<li>string包：字符串处理</li>
+<li>re包：正则表达式</li>
+<li>textwrap包：富文本处理</li>
+</ul>
+</li>
+<li><p>数据对象</p>
+<ul>
+<li>copy包：对象复制</li>
+</ul>
+</li>
+<li><p>日期和时间：</p>
+<ul>
+<li>time包：时间处理</li>
+<li>datetime包：日期与时间处理</li>
+</ul>
+</li>
+<li><p>数学运算：</p>
+<ul>
+<li>decimal包</li>
+<li>fractions包</li>
+<li>random包：随机数处理</li>
+<li>math包：数学常数与函数</li>
+<li>numpy包：数组运算</li>
+</ul>
+</li>
+<li><p>存储：</p>
+<ul>
+<li>sqlite3包：sqlite 数据库处理</li>
+<li>pickle包：二进制文件处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-_系统交互：">2. 系统交互：</h3>
+<ul>
+<li><p>Python运行控制：</p>
+<ul>
+<li>sys包：管理Python自身的运行环境</li>
+</ul>
+</li>
+<li><p>操作系统：</p>
+<ul>
+<li>os包：Python与操作系统的接口</li>
+<li>subprocess包：用于执行外部命令</li>
+</ul>
+</li>
+<li><p>线程与进程：</p>
+<ul>
+<li>threading包：支持多线程</li>
+<li>multiprocessing包：支持多进程</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-_网络编程：">3. 网络编程：</h3>
+<ul>
+<li><p>基于socket层的网络应用：</p>
+<ul>
+<li>socket包：socket网络处理库</li>
+<li>SocketServer包：socket服务器管理</li>
+<li>asyncore包：异步处理</li>
+</ul>
+</li>
+<li><p>互联网应用：</p>
+<ul>
+<li>BaseHTTPServer包：http协议相关</li>
+<li>urllib包：URL处理</li>
+<li>urllib2包：URL处理</li>
+<li>urlparse包：URL处理</li>
+</ul>
+</li>
+</ul>
+<h1 id="说明">说明</h1>
+<p>参考：<a href="http://www.cnblogs.com/vamei/tag/Python/" target="_blank" rel="external">Python快速教程</a></p>
+]]></content>
+    
+    
+      <category term="Python" scheme="http://www.ruikye.com/tags/Python/"/>
+    
+      <category term="Python" scheme="http://www.ruikye.com/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Android PendingIntent 的使用]]></title>
+    <link href="http://www.ruikye.com/2014/09/15/androidpendingintent/"/>
+    <id>http://www.ruikye.com/2014/09/15/androidpendingintent/</id>
+    <published>2014-09-15T03:22:42.000Z</published>
+    <updated>2014-09-15T08:15:55.000Z</updated>
+    <content type="html"><![CDATA[<p>PendingIntent 是 Android 提供的一种用于外部程序调起自身程序的能力，生命周期不与主程序相关。外部程序通过 PendingIntent 只能调用起三种组件：</p>
+<ul>
+<li><em>Activity</em></li>
+<li><em>Service</em></li>
+<li><em>Broadcast</em></li>
+</ul>
+<p>PendingIntent 的使用场景有三个：</p>
+<ul>
+<li>使用 AlarmManager 设定闹钟</li>
+<li>在系统状态栏显示 Notification</li>
+<li>在桌面显示 Widget</li>
+</ul>
+<p>PendingIntent 也只能通过下列的静态方法获取：</p>
+<figure class="highlight java"><pre><div class="line"><span class="comment">// 获取 Broadcast 关联的 PendingIntent</span></div><div class="line">PendingIntent.getBroadcast(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags)</div><div class="line"></div><div class="line"><span class="comment">// 获取 Activity 关联的 PendingIntent</span></div><div class="line">PendingIntent.getActivity(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags)</div><div class="line">PendingIntent.getActivity(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags, Bundle options)</div><div class="line"></div><div class="line"><span class="comment">// 获取 Service 关联的 PendingIntent</span></div><div class="line">PendingIntent.getService(Context context, <span class="keyword">int</span> requestCode, Intent intent, <span class="keyword">int</span> flags)</div></pre></figure>
+
+<p>对于 PendingIntent，官方的描述是：</p>
+<blockquote>
+<p>A PendingIntent itself is simply a reference to a token maintained by the system describing the original data used to retrieve it. This means that, even if its owning application’s process is killed, the PendingIntent itself will remain usable from other processes that have been given it. If the creating application later re-retrieves the same kind of PendingIntent (same operation, same Intent action, data, categories, and components, and same flags), it will receive a PendingIntent representing the same token if that is still valid, and can thus call cancel() to remove it.</p>
+</blockquote>
+<p>PendingIntent 是系统对于待处理数据的一个引用，称之为：token；当主程序被 Killed 时，token 还是会继续存在的，可以继续供其他进程使用。如果要取消 PendingIntent，需要调用 PendingIntent 的 cancel 方法。</p>
+<p>对于 PendingIntent 容易误解的一点是：<br><code>如果创建了很多 PendingIntent，只要 extra 中的数据不同的话，以为就是两个不同的 PendingIntent</code> 这种理解是错误的！！</p>
+<p>正确区分不同 PendingIntent 有两种方法：</p>
+<ul>
+<li>PendingIntent.getXXX(…) 方法中的 requestCode 不同</li>
+<li>通过 <code>Intent.filterEquals</code> 测试时不相等</li>
+</ul>
+<p>关于 PendingIntent.getXXX(…) 方法中第四个参数 <code>flags</code>，在 PendingIntent 定义了四个比较常用的 FLAG：</p>
+<figure class="highlight java"><pre><div class="line"><span class="comment">//如果新请求的 PendingIntent 发现已经存在时，取消已存在的，用新的 PendingIntent 替换</span></div><div class="line"><span class="keyword">int</span> FLAG_CANCEL_CURRENT</div><div class="line"></div><div class="line"><span class="comment">//如果新请求的 PendingIntent 发现已经存在时，忽略新请求的，继续使用已存在的</span></div><div class="line"><span class="keyword">int</span> FLAG_NO_CREATE</div><div class="line"></div><div class="line"><span class="comment">//表示 PendingIntent 只能使用一次，如果已使用过，那么 getXXX(...) 将会返回 NULL</span></div><div class="line"><span class="keyword">int</span> FLAG_ONE_SHOT</div><div class="line"></div><div class="line"><span class="comment">//如果新请求的 PendingIntent 发现已经存在时, 如果 Intent 有字段改变了，这更新已存在的 PendingIntent</span></div><div class="line"><span class="keyword">int</span> FLAG_UPDATE_CURRENT</div></pre></figure>
+
+<p>除此之外，在官方的 doc 中还添加了一行注释：</p>
+<blockquote>
+<p><code>flags</code>: or any of the flags as supported by Intent.fillIn() to control which unspecified parts of the intent that can be supplied when the actual send happens.</p>
+</blockquote>
+<h2 id="参考">参考</h2>
+<p>【1】：<a href="http://developer.android.com/reference/android/app/PendingIntent.html" target="_blank" rel="external">http://developer.android.com/reference/android/app/PendingIntent.html</a></p>
+]]></content>
+    
+    
+      <category term="Android" scheme="http://www.ruikye.com/tags/Android/"/>
+    
+      <category term="Android" scheme="http://www.ruikye.com/categories/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Github 的域名绑定]]></title>
+    <link href="http://www.ruikye.com/2014/08/31/github_domain/"/>
+    <id>http://www.ruikye.com/2014/08/31/github_domain/</id>
+    <published>2014-08-31T01:05:28.000Z</published>
+    <updated>2014-09-12T09:50:11.000Z</updated>
+    <content type="html"><![CDATA[<p>Github 的 Pages 功能不但提供了用户免费搭建博客的功能，同时还提供了自定义的域名绑定；在 Github 上搭建了博客后，Github 会自动给每个网址分配一个二级域名，如：rakkang.github.io，二级域名的问题是太长，也不太容易记住。所以很多用户都会自己申请独立域名并与 Github 的博客绑定起来。</p>
+<h2 id="域名注册">域名注册</h2>
+<p>要绑定独立的域名，首先得注册自己域名，域名一般是收费的；如果网站服务器是在国内的话，域名还需要通过工信部的备案才能使用。推荐使用 <a href="http://dnspod.cn" target="_blank" rel="external">DNSPod</a> 注册域名，因为解析是免费的。</p>
+<h2 id="域名绑定">域名绑定</h2>
+<p>在 DNSPod 上注册好域名之后，要通过设置绑定到指定的服务器在正常访问。如图：</p>
+<p><img src="/img/dnspod.png" alt="dnspod"></p>
+<p>Github 提供了两种域名绑定的方式：</p>
+<blockquote>
+<p>NS 记录是 DNSPod 默认的绑定，不用管</p>
+</blockquote>
+<ul>
+<li><p><code>A</code> 记录类型<br><code>A</code> 记录绑定是服务器IP地址，一般是如果是顶级域名，如：<code>www.xxx.com</code> 等，绑定全站使用这种类型</p>
+</li>
+<li><p><code>CNAME</code> 记录类型<br><code>CNAME</code> 记录类型绑定是一个域名，一般如果使用的是其他服务器的二级域名时使用</p>
+</li>
+</ul>
+<blockquote>
+<p>主机记录类型，默认是<code>@</code>，那么访问只能通过 domain.com 访问；<br>如果是<code>wwww</code>类，那么就可以通过 www.domain.com 访问了</p>
+</blockquote>
+<p>因为 Github 本身提供了一个可访问的二级域名，所以采用 <code>CNAME</code> 记录更方便些。</p>
+<p>在 DNSPod 设置好绑定的服务器后，要是 Github 帮你解析，还需要在项目的根目录新建一个<code>CNAME</code>的文件：</p>
+<p><img src="/img/github_blog.png" alt="github_blog"></p>
+<p>文件内容很简单，比如申请的域名是：domain.com, 那么填写：</p>
+<figure class="highlight"><pre><div class="line">domain.<span class="keyword">com</span></div></pre></figure>
+
+<p>设置好之后，打开项目的 <code>Settings</code>, 在 <code>GitHub Pages</code> 一栏出现下面的内容说明绑定成功了：</p>
+<p><img src="/img/github_domain.png" alt="github_domain"></p>
+<blockquote>
+<p>在 DNSPod 设置之后，由于DNS缓存的原因，域名解析生效需要一段时间，一般10几分钟就行了。如果在 Github 绑定域名后，出现 404 错误可能是缓存的原因，多试几次或者过一会儿再刷新</p>
+</blockquote>
+<p>如果要测试域名是否解析成功以及具体的解析地址，可以在终端执行<code>dig</code>命令查看：</p>
+<figure class="highlight sh"><pre><div class="line">$ dig ruikye.com +nostats +nocomments +nocmd</div></pre></figure>
+
+<p>命令的结果：</p>
+<figure class="highlight sh"><pre><div class="line">$ dig ruikye.com +nostats +nocomments +nocmd</div><div class="line"></div><div class="line">; &lt;&lt;&gt;&gt; DiG <span class="number">9.8</span>.<span class="number">3</span>-P1 &lt;&lt;&gt;&gt; ruikye.com +nostats +nocomments +nocmd</div><div class="line">;; global options: +cmd</div><div class="line">;ruikye.com.                 IN  A</div><div class="line">ruikye.com.             <span class="number">600</span>  IN  CNAME   rakkang.github.com.</div><div class="line">rakkang.github.com.     <span class="number">30</span>   IN  CNAME   github.map.fastly.net.</div><div class="line">github.map.fastly.net.  <span class="number">1</span>    IN  A       <span class="number">103.245</span>.<span class="number">222.133</span></div></pre></figure>
+
+<p>如果结果和在 DNSPod 设置的一致，说明解析以生效了。</p>
+<h2 id="参考">参考</h2>
+<p>【1】：<a href="https://help.github.com/categories/20/articles" target="_blank" rel="external">https://help.github.com/categories/20/articles</a></p>
+]]></content>
+    
+    
+      <category term="Github" scheme="http://www.ruikye.com/tags/Github/"/>
+    
+      <category term="Github" scheme="http://www.ruikye.com/categories/Github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[《烟花易冷》故事]]></title>
+    <link href="http://www.ruikye.com/2014/08/30/yanhuayilen/"/>
+    <id>http://www.ruikye.com/2014/08/30/yanhuayilen/</id>
+    <published>2014-08-30T09:30:14.000Z</published>
+    <updated>2015-01-18T09:01:44.000Z</updated>
+    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记得以前看《我是歌手》的时候，听林志炫唱《烟花易冷》特别有感觉，觉得比周杰伦自己唱的的好太多了；那阵子还真是 “中毒” 很深啊，天天单曲循环。后来闲来无事，逛逛百度贴吧，偶然间发现了这篇故事，觉得不错就记录了下来，这几天搭建了博客，为了装点门面，所以贴了出来:</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;《烟花易冷》的故事发生于南北朝时期，当时，以宋武帝刘裕为首的南朝宋，以及道武帝拓跋珪为首的北魏，那是中国历史上一段分裂的时期。公元 420年开始，南北朝之间因势力扩张以及疆土兼并，战争不断，其间南朝负多胜少。公元 422年，宋武帝刘裕病逝，北魏明元帝拓跋嗣大举攻宋，先后攻取金塘（洛阳）、虎牢、滑台。 430年，宋文帝刘义隆收复黄河以南失地，迫使魏军主动撤退，宋相继占领滑台、洛阳、虎牢。同年，北魏全线反击，连克金塘、洛阳、虎牢、滑台。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;公元449 年，拓跋焘大破柔然，之后兵指刘宋，宋文帝为阻止魏军南下，发兵北攻。由于宋文帝舍功采对，自戳良将，杀害裴方明等名将，使士气大挫，加上连年征战，国力渐衰，军中久无御敌之将，又不顾朝臣之反对，于太平真君十一年发兵攻魏，魏军后发制人，以号称百万之众强渡黄河，步步逼近，宋军无奈只得南撤，从此宋文帝再也无力争夺中原。 公元 493年，魏孝文帝拓跋宏迁都洛阳。频繁南下攻齐（ 479年，宋中领军将军萧道成代宋建立齐朝），至此，北魏、南齐进行了长达 23年的战争…</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;而《烟花易冷》的故事，正是对那个战火纷飞年代一个凄美爱情故事的描述。 天下起了雨，将军看着门外的烟雨、思绪飘到了很远的地方…… 宋文帝时期，一守城将军奉命驻守洛阳城，其间邂逅当地一名女子，一见如故，很快便私订终身。此时北魏来犯，将军奉命出征，临别时拉住女子的手：“等我打胜了后，一定回来迎娶你……” 俩人依依昔别，女子守在城门口，看着将军坐在马鞍之上，头也不回地离去……</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;将军此征一去便是数月，其间刘宋节节败退，宋文帝一气之下连斩二将，北魏全线出击，强渡黄河，宋文帝不听朝臣进言，发动强攻，不敌之下，洛阳失守。宋文帝只得撤兵，而重伤的将军则流落于他乡。 待将军伤复之后，本想回朝，无奈此时刘宋大势已去，回去只有死路一条。死，将军从未怕过，但想着曾经的誓言，加上对宋文帝乱杀良将之举已至心寒，无奈之下，委身于他乡，希望有朝一日平昔战火，再回到她的身旁。 他们惜别的城门，有一位女子经常坐在一块石板上等着心爱的人回来。每每遇到前方归来的人，女子便问有没有见过将军，但始终没有将军得胜归来的消息。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;女子从未放弃过，仍然日复一日地等着。又过数十年，最后女子苦守将领不遇后，落发为尼。这个故事，一传十，十传百，终于传到了在将军耳里。 但将军不能回去，此时北魏已迁都洛阳，这是一个不争的事实，南北朝战争还在继续，他必须活下去，等到战争结束那一天…… 不知道多少年，战争终于结束了。 将军第一次回到了那个日思夜想的地方。 一身平民打扮的他，来到残破的早已斑驳不堪的城门前，他走到他们分别的地方，在那棵早已枯掉的大树旁边，摸着那块她天天等待他归来时坐的石板…… 城郊传来优雅的牧笛声，路过的人告诉将军，这里曾有一个女人一直等着她心爱的人归来…… 重新踏足熟悉的土地，他心里的感受，却是那么复杂，仿佛一切又回到了羡煞旁人的当年…… 他在这座残破的孤城里寻着她的踪影，但始终找不到，天上的雨纷纷落下…… 他相信她一直在等他…… 孤城的老者告诉他，她一直是一个人……到死那天都是…… 僧人又回到蒲团之上，静静地坐着，敲打着木鱼…… 天上的雨仍然在纷纷落下，落在禅房外那块石板之上……</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;繁华声 遁入空门 折煞了世人 周杰伦 梦偏冷 辗转一生 情债又几本 如你默认 生死枯等 枯等一圈 又一圈的 年轮 浮图塔 断了几层 断了谁的魂 痛直奔 一盏残灯 倾塌的山门 容我再等 历史转身 等酒香醇 等你弹一曲 古筝 雨纷纷 旧故里草木深 我听闻 你始终一个人 斑驳的城门 盘踞着老树根 石板上回荡的是 再等 雨纷纷 旧故里草木深 我听闻 你仍守着孤城 城郊牧笛声 落在那座野村 缘份落地生根是 我们 听青春 迎来笑声 羡煞许多人 那史册 温柔不肯 下笔都太狠 烟花易冷 人事易分 而你在问 我是否还 认真 千年后 累世情深 还有谁在等 而青史 岂能不真 魏书洛阳城 如你在跟 前世过门 跟着红尘 跟随我 浪迹一生 雨纷纷 旧故里草木深 我听闻 你始终一个人</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;斑驳的城门 盘踞着老树根 石板上回荡的是 再等 雨纷纷 旧故里草木深 我听闻 你仍守着孤城 城郊牧笛声 落在那座野村 缘份落地生根是 我们 雨纷纷 旧故里草木深 我听闻 你始终一个人 斑驳的城门 盘踞着老树根 石板上回荡的是 再等 雨纷纷 雨纷纷 旧故里草木深 我听闻 我听闻 你仍守着孤城 城郊牧笛声 落在那座野村 缘份落地生根是 我们 缘份落地生根是 我们 伽蓝寺听雨声盼 永恒 </p>
+<p>——————【剪摘自百度贴吧】</p>
+</blockquote>
+]]></content>
+    
+    
+      <category term="烟花易冷" scheme="http://www.ruikye.com/tags/%E7%83%9F%E8%8A%B1%E6%98%93%E5%86%B7/"/>
+    
+      <category term="文字" scheme="http://www.ruikye.com/categories/%E6%96%87%E5%AD%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Java 随机序列算法]]></title>
+    <link href="http://www.ruikye.com/2014/08/30/java_random_serial/"/>
+    <id>http://www.ruikye.com/2014/08/30/java_random_serial/</id>
+    <published>2014-08-30T09:21:00.000Z</published>
+    <updated>2015-01-18T09:01:32.000Z</updated>
+    <content type="html"><![CDATA[<figure class="highlight java"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 用0~n生成m个数的随机序列</div><div class="line"> *</div><div class="line"> *<span class="javadoctag"> @param</span> limit</div><div class="line"> *           - n-1</div><div class="line"> *<span class="javadoctag"> @param</span> need</div><div class="line"> *           - m</div><div class="line"> *<span class="javadoctag"> @return</span> 生成的随机序列</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] <span class="title">genRandomSerial</span>(<span class="keyword">int</span> limit, <span class="keyword">int</span> need) {</div><div class="line">    <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[limit];</div><div class="line">    <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[need];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; limit; i++) {</div><div class="line">        temp[i] = i;</div><div class="line">    }</div><div class="line"> </div><div class="line">    <span class="keyword">int</span> w;</div><div class="line">    Random rand = <span class="keyword">new</span> Random();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; need; i++) {</div><div class="line">        w = rand.nextInt(limit - i) + i;</div><div class="line">        <span class="keyword">int</span> t = temp[i];</div><div class="line">        temp[i] = temp[w];</div><div class="line">        temp[w] = t;</div><div class="line">        result[i] = temp[i];</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">}</div></pre></figure>
+
+]]></content>
+    
+    
+      <category term="Java" scheme="http://www.ruikye.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://www.ruikye.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用 Android Studio 进行 NDK 开发]]></title>
+    <link href="http://www.ruikye.com/2014/08/30/androidstudio_ndk/"/>
+    <id>http://www.ruikye.com/2014/08/30/androidstudio_ndk/</id>
+    <published>2014-08-30T08:55:46.000Z</published>
+    <updated>2014-08-30T11:31:21.000Z</updated>
+    <content type="html"><![CDATA[<p>Android Studio 中添加已编译的 *.so 在 <em><a href="../androidstudio_so">Android Studio 添加 lib*.so 文件</a></em> 中进行了介绍。这篇文章介绍如何直接在 Android Studio 中编写 NDK 代码并在打包 APK 时自动编译。</p>
+<p>在 Android Studio 中开 NDK 主要做三件事：</p>
+<blockquote>
+<ol>
+<li>在 <em>local.properties</em> 配置 ndk.dir</li>
+<li>在 <em>build.gradle</em> 中配置 NDK 模块，即 C++ 工程</li>
+<li>添加 C++ 代码文件到指定的目录，如：<em>\<module\> / [app] / [src] / [main] / [jni]</module\></em></li>
+<li>(可选)多同平台(<em>不同的CPU架构</em>)编译</li>
+</ol>
+</blockquote>
+<h2 id="1-_在_local-properties_文件中配置_ndk-dir">1. 在 <em>local.properties</em> 文件中配置 ndk.dir</h2>
+<p>使用 Android Studio 建立的项目会在项目的根目录生成名称为 <em>local.properties</em> 文件。  </p>
+<p>配置代码：</p>
+<figure class="highlight java"><pre><div class="line">sdk.dir=/Users/shanee/Development/Android/sdk</div><div class="line">ndk.dir=/Users/shanee/Development/ndk</div></pre></figure>
+
+<h2 id="2-_在_build-gradle_中配置_NDK_模块">2. 在 <em>build.gradle</em> 中配置 NDK 模块</h2>
+<p><em>build.gradle</em> 示例配置：</p>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">    compileSdkVersion <span class="number">19</span></div><div class="line">    buildToolsVersion <span class="string">"20.0.0"</span></div><div class="line"></div><div class="line">    defaultConfig {</div><div class="line">        applicationId <span class="string">"com.example.ndksample"</span></div><div class="line">        minSdkVersion <span class="number">9</span></div><div class="line">        targetSdkVersion <span class="number">19</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line"></div><div class="line">        ndk {</div><div class="line">            moduleName <span class="string">"myEpicGameCode"</span> <span class="comment">// &lt;-- This is the name of my C++ module!</span></div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="comment">// ... more gradle stuff here ...</span></div><div class="line"></div><div class="line">} <span class="comment">// end of android section</span></div></pre></figure>
+
+<p>还可以在 <em>ndk</em> 块中指定一些编译参数、依赖库等：</p>
+<figure class="highlight java"><pre><div class="line">ndk {</div><div class="line">    moduleName <span class="string">"myEpicGameCode"</span></div><div class="line">    cFlags <span class="string">"-DANDROID_NDK -D_DEBUG DNULL=0"</span>   <span class="comment">// Define some macros</span></div><div class="line">    ldLibs <span class="string">"EGL"</span>, <span class="string">"GLESv3"</span>, <span class="string">"dl"</span>, <span class="string">"log"</span>       <span class="comment">// Link with these libraries!</span></div><div class="line">    stl <span class="string">"stlport_shared"</span>                      <span class="comment">// Use shared stlport library</span></div><div class="line">}</div></pre></figure>
+
+<h2 id="3-_添加_C/C++_代码到项目">3. 添加 C/C++ 代码到项目</h2>
+<p>默认的，C++ 代码必须添加在指定的目录：</p>
+<blockquote>
+<ul>
+<li><em>[module_name]</em><ul>
+<li>············<em>[src]</em></li>
+<li>················<em>[main]</em></li>
+<li>····················<em>[jniLibs]</em> ———————- so 目录</li>
+<li>····················<em>[jni]</em> —————————- jni 代码目录</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>C/C++ 代码目录示例：</p>
+<p><img src="/img/jniPath.png" alt="jniPath">  </p>
+<p>完成以上的步骤，就可以编译了，如果 C/C++ 中代码有错误也会提示编译失败的哦。</p>
+<p>如果不想使用默认的 JNI 目录，可以在 <em>build.gradle</em> 中指定目录，在 <em>sourceSets.main</em> 块中添加脚本：</p>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">  </div><div class="line">  <span class="comment">// .. android settings ..</span></div><div class="line"></div><div class="line">  sourceSets.main {</div><div class="line">      jni.srcDirs <span class="string">'src/main/source'</span></div><div class="line">  }</div><div class="line">}</div></pre></figure>
+
+<h2 id="4-_(可选)多同平（CPU架构）台编译">4. (可选)多同平（<em>CPU架构</em>）台编译</h2>
+<p>如果要针对不同的平台分别做优化配置，也可以通过修改 <em>build.gralde</em> 脚本实现，参考配置脚本：</p>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">  </div><div class="line">  <span class="comment">// .. android settings ..</span></div><div class="line"></div><div class="line">  productFlavors {</div><div class="line">        x86 {</div><div class="line">            ndk {</div><div class="line">                abiFilter <span class="string">"x86"</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">        arm {</div><div class="line">            ndk {</div><div class="line">                abiFilter <span class="string">"armeabi-v7a"</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">        mips {</div><div class="line">            ndk {</div><div class="line">                abiFilter <span class="string">"mips"</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">} <span class="comment">// android</span></div></pre></figure>
+
+<p>同样在 <em>ndk</em> 块中可以指定编译参数，依赖库等配置。</p>
+<blockquote>
+<p>这篇文章是从 Google+ 上的一篇帖子翻译过来的，没有示例项目的源码；原文地址：<em><a href="http://shaneenishry.com/blog/2014/08/17/ndk-with-android-studio/" target="_blank" rel="external">NDK With Android Studio</a></em>（需翻墙）.</p>
+</blockquote>
+]]></content>
+    
+    
+      <category term="Android" scheme="http://www.ruikye.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://www.ruikye.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://www.ruikye.com/categories/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Android Studio 添加 lib*.so 文件]]></title>
+    <link href="http://www.ruikye.com/2014/08/30/androidstudio_so/"/>
+    <id>http://www.ruikye.com/2014/08/30/androidstudio_so/</id>
+    <published>2014-08-30T08:43:47.000Z</published>
+    <updated>2015-01-18T08:56:44.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>Android Studio 是一个全新的 Android 开发环境，基于IntelliJ IDEA. 类似 Eclipse ADT，Android Studio 提供了集成的 Android 开发工具用于开发和调试，在IDEA的基础上，Android Studio 提供：  </p>
+<ol>
+<li>基于Gradle的构建支持  </li>
+<li>Android 专属的重构和快速修复  </li>
+<li>提示工具以捕获性能、可用性、版本兼容性等问题  </li>
+<li>支持 ProGuard 和应用签名  </li>
+<li>基于模板的向导来生成常用的 Andoid 应用设计和组件  </li>
+<li>功能强大的布局编辑器，可以让你拖拉 UI 控件并进行效果预览<br>——————— 百度百科</li>
+</ol>
+</blockquote>
+<p>Android Stuido 是Google发布的全新的 Android 开发工具，采用了新的 Gradle 构建系统，与 Eclipse 或者 Ant 方式的构建系统有很大区别。为了方便使用 Eclipse 的开发者迁移项目到 Android Studio，在最新的 Eclipse ADT 插件中提供了导出项目为 Gradle 的工具，使用方法：</p>
+<blockquote>
+<p>打开菜单: <code>File</code> -&gt; <code>Export</code>  </p>
+<p><img src="/img/export.png" alt="export">  </p>
+<p>然后选择要导出的项目，导出成功后会在项目的根目录下生成 build.gradle 文件，之后再用 Android Stuido 导入这个项目就完成了迁移</p>
+</blockquote>
+<p>尽管有 ADT 提供的插件方便迁移 Eclipse 项目，但是导出并不是很完美；因为 Android Studio 使用的是新的 Gradle 构建系统，对 JNI 的支持方式有所不同，按上面的方式导出的项目，打包时 *.so 文件不会自动的添加到 APK；下面来介绍 Android Studio 添加 *.so 的几种方式：</p>
+<h2 id="1-_使用_Android_Studio_建立的项目添加_*-so">1. 使用 Android Studio 建立的项目添加 *.so</h2>
+<p>如果直接使用 Android Studio 建立项目，项目结构与 Eclipse 建立的项目结构是不同的：</p>
+<blockquote>
+<ul>
+<li><em>[module_name]</em><ul>
+<li>············<em>[src]</em></li>
+<li>················<em>[main]</em></li>
+<li>····················<em>[jniLibs]</em> ———————- JNI 目录</li>
+<li>·····························<em>[armeabi]</em></li>
+<li>·····························<em>[armeabi-v7a]</em></li>
+<li>·····························<em>[x86]</em></li>
+<li>·····························<em>[mips]</em></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>使用 Android Studio 建立的项目，直接将 *.so 按上面的目录结构放置就可以了。</p>
+<blockquote>
+<p>示例项目：  </p>
+<p><img src="/img/jniLibsPath.png" alt="jnipath"></p>
+</blockquote>
+<p>代码调用：</p>
+<figure class="highlight java"><pre><div class="line">String libName = <span class="string">"helloNDK"</span>; <span class="comment">// the module name of the library, without .so</span></div><div class="line">System.loadLibrary( libName );</div></pre></figure>
+
+<h2 id="2-_编辑_build-gradle">2. 编辑 build.gradle</h2>
+<p>如果是使用的 Eclipse 导出的项目或者由于别的原因 *.so 必须放置在其他的目录，这时可以编辑 build.gradle 脚本，自定义 *.so 目录：</p>
+<ul>
+<li>方法一：</li>
+</ul>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">    <span class="comment">// .. android settings ..</span></div><div class="line">    sourceSets.main {</div><div class="line">      jniLibs.srcDir <span class="string">'src/main/myCppLibraries'</span> <span class="comment">// &lt;-- Set your folder here!</span></div><div class="line">    }</div><div class="line"> }</div></pre></figure>
+
+<ul>
+<li>方法二：</li>
+</ul>
+<figure class="highlight java"><pre><div class="line">task copyNativeLibs(type: Copy) {</div><div class="line">    from fileTree(dir: <span class="string">'libs'</span>, include: <span class="string">'**/*.so'</span> )  into  <span class="string">'build/native-libs'</span></div><div class="line">}</div><div class="line"></div><div class="line">tasks.withType(Compile) { compileTask -&gt; compileTask.dependsOn copyNativeLibs }</div><div class="line"></div><div class="line">clean.dependsOn <span class="string">'cleanCopyNativeLibs'</span></div><div class="line"></div><div class="line">tasks.withType(PackageApplication) { pkgTask -&gt;</div><div class="line">    pkgTask.jniFolders = <span class="keyword">new</span> HashSet()</div><div class="line">    pkgTask.jniFolders .add(<span class="keyword">new</span> File(projectDir, <span class="string">'build/native-libs'</span>))</div><div class="line">}</div></pre></figure>
+
+]]></content>
+    
+    
+      <category term="Android" scheme="http://www.ruikye.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://www.ruikye.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://www.ruikye.com/categories/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Github·Gist使用攻略]]></title>
+    <link href="http://www.ruikye.com/2014/08/30/github-gist/"/>
+    <id>http://www.ruikye.com/2014/08/30/github-gist/</id>
+    <published>2014-08-30T08:23:07.000Z</published>
+    <updated>2014-08-30T09:47:53.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="https://gist.github.com" target="_blank" rel="external">Gist</a> 是 <a href="https://github.com" target="_blank" rel="external">Github</a> 推出的基于 Git 的代码片段管理服务。用户可以提交自己的代码片段或任意的文本，可以作为个人的代码管理库、文档管理库等。同时 <a href="https://gist.github.com" target="_blank" rel="external">Gist</a> 页面提供访问的 <a href="http://www.baidu.com/s?wd=javascript" target="_blank" rel="external">JavaScript</a> 片段用于嵌入其他网站，如：个人博客等。</p>
+<blockquote>
+<p>但是很多站点粘贴 JavaScript 无效，这时候你可以在 Gist URL 后附加.pibb，得到一个纯 HTML 的版本，然后就可以复制粘贴 HTML 源码到其他网站了。例如: <a href="https://gist.github.com/tiimgreen/10545817.pibb" target="_blank" rel="external">https://gist.github.com/tiimgreen/10545817.pibb</a></p>
+</blockquote>
+<p><a href="https://gist.github.com" target="_blank" rel="external">Gist</a> 作为程序猿居家旅行必备的代码管理工具，极大的方便了 Coder。下面是自己的一些使用 <a href="http://gist.github.com" target="_blank" rel="external">Gist</a> 经验，分享给各位看官：</p>
+<p>使用 <a href="https://gist.github.com" target="_blank" rel="external">Gist</a> 前提必须注册 <a href="http://github.com" target="_blank" rel="external">Github</a> 账户，账户注册比较简单，这里就不做介绍了</p>
+<blockquote>
+<p>如果不知 Github、Git为何物的童鞋就当这个页面不存在吧 ^_^.  </p>
+</blockquote>
+<p>使用、管理 <a href="https://gist.github.com" target="_blank" rel="external">Gist</a> 的几种方式：</p>
+<h2 id="1-_直接使用_https://gist-github-com_创建、管理_Gist：">1. 直接使用 <a href="https://gist.github.com" target="_blank" rel="external">https://gist.github.com</a> 创建、管理 <a href="https://gist.github.com" target="_blank" rel="external">Gist</a>：</h2>
+<blockquote>
+<p>Gist 是以问件的方式管理的，每条 Gist </p>
+</blockquote>
+<p>可以包含若干个文件，文件内容会自动根据选择存储的类型高亮代码，除了支持各种的编程语言外还支持一些常见的文本，如：Markdown、Diff、TeX等。<br>登录 <a href="https://github.com" target="_blank" rel="external">Github</a> 后访问 <a href="https://gist.github.com" target="_blank" rel="external">https://gist.github.com</a> 就打开了个人的 Gist 管理界面，如图点击右上角的 “+” 就可以新建一个 Gist了：</p>
+<blockquote>
+<p><img src="/img/new_tips.png" alt="创建gist"></p>
+</blockquote>
+<p><a href="https://gist.github.com" target="_blank" rel="external">Gist</a> 的整体界面相当的简洁、明了，操作也比较简单。如果不想这条 Gist 被搜索引擎抓取，可以选择创建私有的 Gist, 但是还是可以通过 URL直接访问到的。</p>
+<blockquote>
+<p>注意：Gist 的私有和 Github 的私有项目是不同的</p>
+<p><img src="/img/private.png" alt="私有Gist"></p>
+</blockquote>
+<h2 id="2-_使用_Sublime_Text_2/3_+_Gist插件">2. 使用 <a href="http://www.baidu.com/s?wd=sublime text" target="_blank" rel="external">Sublime Text 2/3</a> + <a href="https://github.com/condemil/Gist" target="_blank" rel="external">Gist插件</a></h2>
+<blockquote>
+<p>Sublime Text 是一个代码编辑器（Sublime Text 2是收费软件，但可以无限期试用），也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。—- 百度百科</p>
+<p>不知 Sublime Text 为何物或者无爱的请忽略</p>
+</blockquote>
+<p>安装 Gist 插件：</p>
+<p>打开 Sublime Text, 按下快捷键<code>CTRL(⌘)+SHIFT+P</code>打开 Package Control面板，输入<code>Install packages</code>在弹出的插件列表中搜索<code>Gist</code>,回车就开始安装 <a href="https://github.com/condemil/Gist" target="_blank" rel="external">Gist插件</a> 了</p>
+<blockquote>
+<p>如果没有安装 Package Controll 插件，请先安装, 打开 Sublime Text的<em>Console</em> (<code>CTRL+反引号</code>) 输入以下代码：</p>
+<h6 id="For_Sublime_Text_3:">For Sublime Text 3:</h6>
+<p>import urllib.request,os; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), ‘wb’).write(urllib.request.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ + pf.replace(‘ ‘,’%20’)).read())</p>
+<h6 id="For_Sublime_Text_2:">For Sublime Text 2:</h6>
+<p>import urllib2,os; pf=’Package Control.sublime-package’; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), ‘wb’ ).write( urllib2.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ +pf.replace( ‘ ‘,’%20’ )).read()); print( ‘Please restart Sublime Text to finish installation’)</p>
+<h6 id="手动安装">手动安装</h6>
+<p>可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：<br>_1. 点击Preferences &gt; Browse Packages菜单  </p>
+<ol>
+<li>进入打开的目录的上层目录，然后再进入Installed Packages/目录  </li>
+<li>下载Package Control.sublime-package并复制到Installed Packages/目录  </li>
+<li>重启Sublime Text。_</li>
+</ol>
+</blockquote>
+<p>安装 Gist 之后，配置 Github 的账户 Token，用命令行工具输入以下命令：</p>
+<figure class="highlight shell"><pre><div class="line">curl -v -u <span class="type">USERNAME</span> -X <span class="type">POST</span> https://api.github.com/authorizations --data <span class="string">"{\"scopes\":[\"gist\"], \"note\": \"SublimeText 2/3 Gist plugin\"}"</span></div></pre></figure>
+
+<p>其中 <code>USERNAME</code> 你的 Github 帐号名。执行成功之后会输出以下代码：</p>
+<figure class="highlight json"><pre><div class="line">{</div><div class="line">    "<span class="attribute">id</span>": <span class="value"><span class="number">107</span>···<span class="number">41</span></span>,</div><div class="line">    "<span class="attribute">url</span>": <span class="value"><span class="string">"https://api.github.com/authorizations/107···41"</span></span>,    "<span class="attribute">app</span>": <span class="value">{</span></div><div class="line">        "<span class="attribute">name</span>": <span class="value"><span class="string">"SublimeText 2/3 Gist plugin (API)"</span></span>,</div><div class="line">        "<span class="attribute">url</span>": <span class="value"><span class="string">"https://developer.github.com/v3/oauth_authorizations/"</span></span>,</div><div class="line">        "<span class="attribute">client_id</span>": <span class="value"><span class="string">"00000000000000000000"</span></span></div><div class="line">    },</div><div class="line">    "<span class="attribute">token</span>": <span class="value"><span class="string">"a28b686c3a74······c300f42414c7"</span></span>,</div><div class="line">    "<span class="attribute">note</span>": <span class="value"><span class="string">"SublimeText 2/3 Gist plugin"</span></span>,</div><div class="line">    "<span class="attribute">note_url</span>": <span class="value"><span class="literal">null</span></span>,</div><div class="line">    "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-08-25T10:54:00Z"</span></span>,</div><div class="line">    "<span class="attribute">updated_at</span>": <span class="value"><span class="string">"2014-08-25T10:54:00Z"</span></span>,</div><div class="line">    "<span class="attribute">scopes</span>": <span class="value">[</span></div><div class="line">        <span class="string">"gist"</span></div><div class="line">    ]</div><div class="line">}</div></pre></figure>
+
+
+<p>按下图所示打开 Gist 插件的配置文件：</p>
+<p><img src="/img/menu.png" alt="menu"><br>添加 Github Token:</p>
+<figure class="highlight json"><pre><div class="line">{</div><div class="line">    // Your GitHub API token</div><div class="line">    // see: https://github.com/condemil/Gist#generating-access-token</div><div class="line">    "token": "a28b686c3a74······c300f42414c7", // 从命令行得到的 token</div><div class="line">}</div></pre></figure>
+
+<p>以上，Sublime Text 2/3 的 Gist 插件就配置好了。配置好后，在 Sublime Text 的 <code>Tools</code> ⟶ <code>Gist</code> 菜单下有使用 Gist 的一些命令，如图：</p>
+<blockquote>
+<p><img src="/img/gist_tools.png" alt="gist_tools"></p>
+<p>使用 Gist 插件很爽的一点是，当你编辑完 gist 文件保存时会自动的帮你同步到 Github·Gist 不用担心没保存丢失，保存 Gist 时可以从 <em>Console</em> 看到同步日志</p>
+</blockquote>
+<h2 id="3-_使用_GistBox_服务">3. 使用 <a href="http://www.gistboxapp.com/" target="_blank" rel="external">GistBox</a> 服务</h2>
+<blockquote>
+<p>GistBox 提供一种漂亮的方式来组织代码片段。将你的库保存到云端进行备份，再也不用担心丢失。GistBox采用标准的HTML5技术构建。GistBox使用GitHub的后端，但增加了自己的标签和搜索功能层。使用Github账号登陆Gistbox可以将你的代码直接同步进来，反过来，你在GB上的所有改动也都会同步到Github上；GistBox的结构设 计清晰，从左至右分别是主导航（新建Gist，Gists入口，收藏入口-Labels）、Gists列表（Public/Private）、具体代码 区，亲们可以用Label给代码加上各种分辨标签，方便分类整理，在检索代码时可以用顶部的搜索栏，输入关键词或Label可以更快的搜索到目标代码。</p>
+</blockquote>
+<p>GistBox 是可以直接用 Github 账户登录的，实时同步你的 Gist 到 Github，很方便。GitBox 从体验上来说更加方便，界面元素丰富，功能也比较全。如果不想用 Sublime Text, 又觉着 Github 自己的 Gist 管理太简单，GistBox是一种不错的方式。</p>
+<blockquote>
+<p>GistBox 同时提供了 Chrome 插件</p>
+</blockquote>
+<p>以上就是我使用 Gist 的一些经验，感谢读完全文！</p>
+]]></content>
+    
+    
+      <category term="Github" scheme="http://www.ruikye.com/tags/Github/"/>
+    
+      <category term="Gist" scheme="http://www.ruikye.com/tags/Gist/"/>
+    
+      <category term="Software" scheme="http://www.ruikye.com/categories/Software/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Sublime Text 推荐插件]]></title>
+    <link href="http://www.ruikye.com/2014/08/30/SublimeText-Plugins/"/>
+    <id>http://www.ruikye.com/2014/08/30/SublimeText-Plugins/</id>
+    <published>2014-08-30T08:14:20.000Z</published>
+    <updated>2015-01-18T09:01:40.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>Sublime Text 是一个代码编辑器（Sublime Text 2是收费软件，但可以无限期试用），也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。—- 百度百科</p>
+</blockquote>
+<h4 id="1-_Package_Control">1. <a href="https://github.com/wbond/sublime_package_control" target="_blank" rel="external">Package Control</a></h4>
+<p>Package Control 是 Sublime Text 管理其他插件的工具，可以实现在线安装、删除插件等功能。</p>
+<p>安装方法，打开 Sublime Text，按快捷键 <code>CTRL+反引号</code> 调出控制台(<em>Console</em>), 输入以下代码 ：</p>
+<pre><code>Sublime <span class="built_in">Text</span> <span class="number">2</span> 安装代码：
+</code></pre><blockquote>
+<p>import urllib2,os; pf=’Package Control.sublime-package’; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), ‘wb’ ).write( urllib2.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ +pf.replace( ‘ ‘,’%20’ )).read()); print( ‘Please restart Sublime Text to finish installation’)</p>
+</blockquote>
+<pre><code>Sublime <span class="built_in">Text</span> <span class="number">3</span> 安装代码：
+</code></pre><blockquote>
+<p>import urllib.request,os; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), ‘wb’).write(urllib.request.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ + pf.replace(‘ ‘,’%20’)).read())</p>
+</blockquote>
+<pre><code>手动安装
+</code></pre><blockquote>
+<p>可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：</p>
+<ol>
+<li>点击Preferences &gt; Browse Packages菜单<ol>
+<li>进入打开的目录的上层目录，然后再进入Installed Packages/目录</li>
+<li>下载Package Control.sublime-package并复制到Installed Packages/目录</li>
+<li>重启Sublime Text。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p> 安装完成后，可以使用<code>CTRL(CMD)+SHIFT+P</code>快捷键打开控制面板，输入: <em>package control</em> 。</p>
+<h4 id="2-_SideBarEnhancements">2. <a href="https://github.com/titoBouzout/SideBarEnhancements" target="_blank" rel="external">SideBarEnhancements</a></h4>
+<p>直接使用 Package Control 安装，SideBarEnhancements是 Sublime Text中强大的 Sidebar 插件，Sublime Text 本身的 Sidebar 提供的右键菜单非常简陋，有 SideBarEnhancements 之后，可以实现很多使用的功能，比如：在文件浏览器中打开文件等。</p>
+<h4 id="3-_ConvertToUTF8">3. <a href="https://github.com/seanliang/ConvertToUTF8" target="_blank" rel="external">ConvertToUTF8</a></h4>
+<p>直接使用 Package Control 安装。Sublime Text 本对中文支持不太好，如果直接打开 GBK 编码格式的文件会出现乱码的情况，ConvertToUTF8 可以将 GBK 等其他的编码文件转换为 UTF8 显示，解决中文乱码问题。</p>
+<blockquote>
+<p>通过本插件，您可以编辑并保存目前编码不被 Sublime Text 支持的文件，特别是中日韩用户使用的 GB2312，GBK，BIG5，EUC-KR，EUC-JP 等。ConvertToUTF8 同时支持 Sublime Text 2 和 3。 ——- ConvertToUTF8 官方介绍</p>
+</blockquote>
+<h4 id="4-_JsFormat">4. <a href="https://github.com/jdc0589/JsFormat" target="_blank" rel="external">JsFormat</a></h4>
+<p>直接使用 Package Control 安装。JsFormat 顾名思义，是一个可以格式化 JavaScript 代码的插件（也可以格式化Json），格式化是文件名必须保存问 *.js 或 *.json, 这样插件才能识别出代码。</p>
+<h4 id="5-_Markdown_Preview">5. <a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="external">Markdown Preview</a></h4>
+<p>直接使用 Package Control 安装。Markdown Preview 是一个支持 Markdown 标记语言的插件，Sublime Text 本身是支持 Markdown 的，但是显示不太美观。同时， Markdown Preview 还支持导出 HTML 或者在浏览器中打开预览。</p>
+<p>使用方法：</p>
+<blockquote>
+<p>打开控制面板（<code>CTRL+SHIFT+P</code>），输入: <em>markdown preview</em> 就可看到相关的命令了。</p>
+</blockquote>
+<h4 id="6-_MarkdownEditing">6. <a href="https://github.com/SublimeText-Markdown/MarkdownEditing" target="_blank" rel="external">MarkdownEditing</a></h4>
+<p>直接使用 Package Control 安装。MardownEditing 是一款功能更加强大的 Markdown 插件。最大的特色是支持 <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank" rel="external">GFM</a> ( GitHub flavored Markdown) 代码高亮。</p>
+<blockquote>
+<p>Markdown plugin for Sublime Text. Provides a decent Markdown color scheme (light and dark) with more robust syntax highlighting and useful Markdown editing features for Sublime Text. 3 flavors are supported: Standard Markdown, GitHub flavored Markdown, MultiMarkdown. </p>
+</blockquote>
+<h4 id="7-_Spacegray">7. <a href="https://github.com/kkga/spacegray" target="_blank" rel="external">Spacegray</a></h4>
+<p>直接使用 Package Control 安装。Spacegray 是一款高大上的 Sublime Text 主题。有 Ocean Dark、 Ocean Light 和 Eighties Dark 三中主题。</p>
+<p>其他的插件还有：<a href="https://github.com/SublimeText/Tag" target="_blank" rel="external">Tag</a>, <a href="https://github.com/condemil/Gist" target="_blank" rel="external">Gist</a>, <a href="https://github.com/wbond/sublime_alignment" target="_blank" rel="external">Alignment</a>, <a href="https://github.com/alienhard/SublimeAllAutocomplete" target="_blank" rel="external">All AutoComplete</a> 等等…</p>
+]]></content>
+    
+    
+      <category term="Sublime Text" scheme="http://www.ruikye.com/tags/Sublime-Text/"/>
+    
+      <category term="Software" scheme="http://www.ruikye.com/categories/Software/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hexo 搭建个人博客 · 进阶篇]]></title>
+    <link href="http://www.ruikye.com/2014/08/30/Hexo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%C2%B7-%E8%BF%9B%E9%98%B6%E7%AF%87/"/>
+    <id>http://www.ruikye.com/2014/08/30/Hexo-搭建个人博客-·-进阶篇/</id>
+    <published>2014-08-30T05:07:26.000Z</published>
+    <updated>2015-01-18T09:01:24.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="Hexo_配置文件__config-yml">Hexo 配置文件 <em>_config.yml</em></h2>
+<p>Hexo 的各种通用的配置都是在博客根目录行下的 <em>_config.yml</em> 文件中设置的。下面介绍一些常用的配置项：</p>
+<figure class="highlight sh"><pre><div class="line"><span class="comment"># Site 基本信息</span></div><div class="line">title: Ruikye                      <span class="comment"># 博客标题，如左上角显示</span></div><div class="line">subtitle: ruikye 的个人博客         <span class="comment"># 博客副标题</span></div><div class="line">description: 移动开发技术分享博客     <span class="comment"># 用于搜索引擎搜索到的描述信息</span></div><div class="line">author: 零雨の夜                    <span class="comment"># 博客署名，一般会现在在博客的最下方，rg: &copy;2014 零雨の夜</span></div><div class="line">email: xxx@xxx.com                <span class="comment"># 可不填</span></div><div class="line">language: zh-CN                   <span class="comment"># 让博客支持中文</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment"># Writing</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">highlight:              <span class="comment"># 代码高亮</span></div><div class="line">  enable: <span class="literal">true</span>          <span class="comment"># 开启代码高亮</span></div><div class="line">  line_number: <span class="literal">false</span>    <span class="comment"># 是否显示行号</span></div><div class="line">  tab_replace: <span class="literal">true</span>     <span class="comment"># 是否替换 tab 为空格</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment"># Pagination</span></div><div class="line"><span class="comment">## Set per_page to 0 to disable pagination</span></div><div class="line">per_page: <span class="number">1</span>             <span class="comment"># 文章分页时，每页最多显示文章数，eg: 我的博客在首页和归档页最多只显示一篇文章</span></div><div class="line">pagination_dir: page    <span class="comment"># 分页目录</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment"># Extensions</span></div><div class="line"><span class="comment">## Plugins: https://github.com/hexojs/hexo/wiki/Plugins</span></div><div class="line"><span class="comment">## Themes: https://github.com/hexojs/hexo/wiki/Themes</span></div><div class="line">theme: bs-light         <span class="comment"># 这里配置博客的主题风格，主题安装在 themes/ 目录下，这里的值就是主题的文件夹名字 </span></div><div class="line">exclude_generator:</div><div class="line"></div><div class="line">plugins:</div><div class="line">- hexo-generator-feed   <span class="comment"># 安装、启用的插件，这里是启动 RSS 订阅的插件</span></div><div class="line"></div><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: github                                                  <span class="comment"># 博客托管服务器类型</span></div><div class="line">  repository: https://github.com/rakkang/rakkang.github.io.git  <span class="comment"># 托管服务器地址</span></div><div class="line">  brach: master                                                 <span class="comment"># 博客使用的代码分支</span></div></pre></figure>
+
+<p>除了 Hexo 的通用配置外，每个主题还有各自的配置文件，主题的配置文件放在：themes/[xxx]/_config.yml, eg: themes/bs-light/_config.yml，下面以 <code>bs-light</code> 为例：</p>
+<figure class="highlight sh"><pre><div class="line"><span class="comment"># 导航栏，如右上角的显示，Tips: RSS 栏是插件添加的不再这里</span></div><div class="line">menu:</div><div class="line">  首页: /                 <span class="comment"># 格式是：[显示标签]:[索引目录]</span></div><div class="line">  存档: /archives</div><div class="line"></div><div class="line"><span class="comment"># 文章右边的小部件</span></div><div class="line">widgets:</div><div class="line"><span class="comment"># search/tag/category/recent_posts/tagcloud   ----&gt; 这里是 bs-light 的可用小部件</span></div><div class="line">- search                 <span class="comment"># 搜索框</span></div><div class="line">- recent_posts           <span class="comment"># 最近发布的文章</span></div><div class="line">- category               <span class="comment"># 存档目录</span></div><div class="line">- tagcloud               <span class="comment"># 文章的标签集合</span></div><div class="line"></div><div class="line"><span class="comment"># 如果在文章的 *.md 中使用 &lt;!-- more --&gt;，那么之后的内容不会在首页显示，而是显示 阅读全文 的链接，显示可以更改</span></div><div class="line"><span class="comment"># 如：更多，查看原文等</span></div><div class="line">excerpt_link: 阅读全文</div><div class="line"></div><div class="line"><span class="comment"># 博客的社交分享，eg: 博客底部的两个图标</span></div><div class="line">social:</div><div class="line"><span class="comment"># key weibo/twitter/google/github/stackoverflow/rss</span></div><div class="line"><span class="comment"># value url</span></div><div class="line"><span class="comment"># e.g github: https://github.com/DaiXiang</span></div><div class="line">  github: https://github.com/rakkang</div><div class="line">  rss: /atom.xml</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">cnzz_analytics: <span class="literal">true</span>     <span class="comment"># 博客的访问统计，这里使用 CNZZ 的统计</span></div><div class="line"><span class="comment"># google_analytics:</span></div><div class="line"><span class="comment"># rss:</span></div><div class="line"></div><div class="line"><span class="comment"># comment_provider:      # 评论功能，一般使用国内的 多说评论</span></div><div class="line"><span class="comment"># Facebook comment</span></div></pre></figure>
+
+<h2 id="为文章添加_Tag、Category_属性">为文章添加 <em>Tag</em>、<em>Category</em> 属性</h2>
+<p>通常，使用下面命令新建的文章模版时，会在文章模版的头部出现一些属性信息：</p>
+<figure class="highlight"><pre><div class="line">$ hexo <span class="built_in">new</span> <span class="built_in">post</span> <span class="string">"a new article"</span></div></pre></figure>
+
+<p>文章模版的属性信息：</p>
+<figure class="highlight sh"><pre><div class="line">title: Hexo 搭建个人博客 · 进阶篇    <span class="comment"># 文章显示标题</span></div><div class="line">date: <span class="number">2014</span>-<span class="number">08</span>-<span class="number">30</span> <span class="number">13</span>:<span class="number">07</span>:<span class="number">26</span>         <span class="comment"># 文章创建日期</span></div><div class="line">tags: hexo                        <span class="comment"># Tag 属性，如果多个 Tag 使用：[Tag 1, Tag 2 ...]</span></div><div class="line">categories: hexo                  <span class="comment"># Category 属性，多个时使用：[Category 1, ...]；默认是没有这个的，下面有介绍</span></div><div class="line">---</div></pre></figure>
+
+<p>在模版中添加 <em>Categories</em> 属性，在博客根目录下 scaffolds/ 文件夹中有各种文章类型的模版，比如在：scaffolds/post.md 中：</p>
+<figure class="highlight sh"><pre><div class="line">title: title</div><div class="line">date: date</div><div class="line">tags:</div><div class="line">categories:                       <span class="comment"># 在这里添加 Category 属性，如果要修改其他的模版，同样的修改方式</span></div></pre></figure>
+
+<h2 id="添加多说评论">添加多说评论</h2>
+<p>Hexo 默认使用的 Facebook 的评论代码，在天朝由于众所周知的原因，不能使用。这里介绍使用过年的多说评论：<br>多说官网：<a href="http://duoshuo.com/" target="_blank" rel="external">http://duoshuo.com/</a>, 现在多少网址注册，按流程拿到代码：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> </span></div><div class="line">     <span class="attribute">data-thread-key</span>=<span class="value">"请将此处替换成文章在你的站点中的ID"</span> </div><div class="line">     <span class="attribute">data-title</span>=<span class="value">"请替换成文章的标题"</span> </div><div class="line">     <span class="attribute">data-url</span>=<span class="value">"请替换成文章的网址"</span>&gt;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> duoshuoQuery = {short_name:<span class="string">"ruikye"</span>};</div><div class="line">    (<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">var</span> ds = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">        ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</div><div class="line">        ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? </div><div class="line">                    <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</div><div class="line">        ds.charset = <span class="string">'UTF-8'</span>;</div><div class="line">        (<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] </div><div class="line">         || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);</div><div class="line">    })();</div><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></div></pre></figure>
+
+<p>首先，打开 themes/[xxx]/layout/_partial/article.ejs 文件，在最后面添加多说评论框：</p>
+<figure class="highlight"><pre><div class="line"><span class="vbscript">&lt;% <span class="keyword">if</span> (page.comments){ %&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 多说评论框 start --&gt;</span></div><div class="line">    ...</div><div class="line">    <span class="comment">&lt;!-- 多说评论框 end --&gt;</span></div><div class="line"><span class="vbscript">&lt;% } %&gt;</span></div></pre></figure>
+
+<p>然后，打开 themes/[xxx]/layout/_partial/after_footer.ejs 文件，在最后添加多说 JS 脚本代码：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></div><div class="line">...</div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></div></pre></figure>
+
+<p>这样多说评论就添加好了，点击文章的标题，在打开的页面下方就会出现多说的评论框。</p>
+<h2 id="添加百度分享">添加百度分享</h2>
+<p>同样，使用百度分享要先到百度分享官网：<a href="http://share.baidu.com/" target="_blank" rel="external">http://share.baidu.com/</a> 按照流程获取 JS 脚本代码。打开 themes/[xxx]/layout/_partial/post/share.ejs，删除文件内容，用获取到的百度分享代码替换：</p>
+<figure class="highlight"><pre><div class="line">&lt;div <span class="variable">class=</span><span class="string">"bdsharebuttonbox"</span>&gt;</div><div class="line">    &lt;a <span class="variable">href=</span><span class="string">"#"</span> <span class="variable">class=</span><span class="string">"bds_more"</span> <span class="variable">data-cmd=</span><span class="string">"more"</span>&gt;</div><div class="line">    &lt;/a&gt;</div><div class="line">    &lt;a <span class="variable">href=</span><span class="string">"#"</span> <span class="variable">class=</span><span class="string">"bds_qzone"</span> <span class="variable">data-cmd=</span><span class="string">"qzone"</span> <span class="variable">title=</span><span class="string">"分享到QQ空间"</span>&gt;</div><div class="line">    &lt;/a&gt;</div><div class="line">    &lt;a <span class="variable">href=</span><span class="string">"#"</span> <span class="variable">class=</span><span class="string">"bds_tsina"</span> <span class="variable">data-cmd=</span><span class="string">"tsina"</span> <span class="variable">title=</span><span class="string">"分享到新浪微博"</span>&gt;</div><div class="line">    &lt;/a&gt;</div><div class="line">    &lt;a <span class="variable">href=</span><span class="string">"#"</span> <span class="variable">class=</span><span class="string">"bds_tqq"</span> <span class="variable">data-cmd=</span><span class="string">"tqq"</span> <span class="variable">title=</span><span class="string">"分享到腾讯微博"</span>&gt;</div><div class="line">    &lt;/a&gt;</div><div class="line">    &lt;a <span class="variable">href=</span><span class="string">"#"</span> <span class="variable">class=</span><span class="string">"bds_renren"</span> <span class="variable">data-cmd=</span><span class="string">"renren"</span> <span class="variable">title=</span><span class="string">"分享到人人网"</span>&gt;</div><div class="line">    &lt;/a&gt;</div><div class="line">    &lt;a <span class="variable">href=</span><span class="string">"#"</span> <span class="variable">class=</span><span class="string">"bds_weixin"</span> <span class="variable">data-cmd=</span><span class="string">"weixin"</span> <span class="variable">title=</span><span class="string">"分享到微信"</span>&gt;</div><div class="line">    &lt;/a&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    window.<span class="variable">_bd_share_config =</span> {</div><div class="line">        <span class="string">"common"</span>: {</div><div class="line">            <span class="string">"bdSnsKey"</span>: {},</div><div class="line">            <span class="string">"bdText"</span>: <span class="string">""</span>,</div><div class="line">            <span class="string">"bdMini"</span>: <span class="string">"1"</span>,</div><div class="line">            <span class="string">"bdMiniList"</span>: <span class="constant">false</span>,</div><div class="line">            <span class="string">"bdPic"</span>: <span class="string">""</span>,</div><div class="line">            <span class="string">"bdStyle"</span>: <span class="string">"1"</span>,</div><div class="line">            <span class="string">"bdSize"</span>: <span class="string">"16"</span></div><div class="line">        },</div><div class="line">        <span class="string">"share"</span>: {},</div><div class="line">        <span class="string">"image"</span>: {</div><div class="line">            <span class="string">"viewList"</span>: [<span class="string">"qzone"</span>, <span class="string">"tsina"</span>, <span class="string">"tqq"</span>, <span class="string">"renren"</span>, <span class="string">"weixin"</span>],</div><div class="line">            <span class="string">"viewText"</span>: <span class="string">"分享到："</span>,</div><div class="line">            <span class="string">"viewSize"</span>: <span class="string">"16"</span></div><div class="line">        }</div><div class="line">    };</div><div class="line">    <span class="keyword">with</span>(document) <span class="number">0</span>[(getElementsByTagName('head')[<span class="number">0</span>] || body).appendChild(createElement('script')).<span class="variable">src =</span> </div><div class="line">            'http://bdimg.share.baidu.com/static/api/js/share.js?<span class="variable">v=</span><span class="number">89860593</span>.js?<span class="variable">cdnversion=</span>' </div><div class="line">                    + ~ ( - new Date() / <span class="number">36</span>e5)];</div><div class="line">&lt;/script&gt;</div></pre></figure>
+
+<h2 id="安装_RSS_插件">安装 RSS 插件</h2>
+<p>RSS 插件要依赖 Node.js 安装，进入博客的本目了，执行命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ npm <span class="operator"><span class="keyword">install</span> hexo-generator-feed <span class="comment">--save</span></span></div></pre></figure>
+
+<p>安装之后，可以在通用的 <em>_config.yml</em> 文件中配置插件：</p>
+<figure class="highlight sh"><pre><div class="line">feed:</div><div class="line">    <span class="built_in">type</span>: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: <span class="number">20</span></div></pre></figure>
+
+<h2 id="安装_Sitemap">安装 Sitemap</h2>
+<p>Sitemap 是搜索引擎抓取网站要用到的，安装命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ npm <span class="operator"><span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save</span></span></div></pre></figure>
+
+<p>可选配置：</p>
+<figure class="highlight sh"><pre><div class="line">sitemap:</div><div class="line">    path: sitemap.xml</div></pre></figure>
+
+<p>按上面的配置之后，你的博客立马变得功能丰富了很多有木有～～～</p>
+<h2 id="参考">参考</h2>
+<p>【1】：<a href="https://github.com/hexojs/hexo/wiki/Plugins" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Plugins</a></p>
+]]></content>
+    
+    
+      <category term="Hexo" scheme="http://www.ruikye.com/tags/Hexo/"/>
+    
+      <category term="Hexo" scheme="http://www.ruikye.com/categories/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hexo 搭建个人博客 · 基础篇]]></title>
+    <link href="http://www.ruikye.com/2014/08/29/Hexo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%C2%B7-%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
+    <id>http://www.ruikye.com/2014/08/29/Hexo-搭建个人博客-·-基础篇/</id>
+    <published>2014-08-29T14:35:13.000Z</published>
+    <updated>2015-01-18T09:06:51.000Z</updated>
+    <content type="html"><![CDATA[<p>最近 Github 在 IT 界是火得一踏糊涂，作为一个程序猿没听过 Github 真觉得 Out 了。本身 Github 是一个基于 git 版本控制系统的托管仓库，程序员可以在 Github 上托管代码，设计师可以在 Github 上协同创作等等各种方便。最近 Apple 为 IOS 发布了新的编程语言，北邮的几个学生就在 Github 上发起了协同翻译《The Swift Programming Language》英文版，项目地址：<a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese" target="_blank" rel="external">中文版 Apple 官方 Swift 教程</a>。</p>
+<p>同时，Github 为了更好的程序员介绍自己的项目，提供了 Pages 功能，Pages 功能就是为每个项目提供一种静态网页的描述方式，很多网友就利用 Pages 功能搭建了自己的个人博客，这篇文章就是介绍如何使用 Hexo 快速的在 Github 上搭建自己的个人博客。</p>
+<blockquote>
+<p>Github 的 Pages 功能是免费的，省去了直接搭建博客的服务器成本；但是也有一定的限制，免费用户空间上线是 300M, 只能建立静态的个人博客，如果要建立动态网站还是用 WordPress 比较靠谱</p>
+</blockquote>
+<p>本来自己搭建了一个基于 WordPress 的博客 <em>(<a href="http://k.awaysoft.com" target="_blank" rel="external">k.awaysoft.com</a>)</em>，由于个人喜欢用 Markdown 写文章，而 WordPress 本身是不支持 Markdown 的，所以每次发布文章各种麻烦，加上 WordPress 越做越臃肿，萌生了换个框架搭建博客的想法。好早听说了 Github 的 Pages 功能可以搭建博客，由于各种原因一直没动手；听朋友介绍 Hexo 不错，遂百度，发现 Hexo 是利用了 Github 的 Pages 功能，于是就有了这个博客的诞生，在搭建博客过程中积累点点经验，不敢独享，分享给大家。</p>
+<h2 id="工具介绍：">工具介绍：</h2>
+<h3 id="1-_Hexo">1. Hexo</h3>
+<p>Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 Github 和 Heroku上。作者是来自台湾的<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">@tommy351</a>。官方介绍：</p>
+<blockquote>
+<p>A fast, simple &amp; powerful blog framework, powered by Node.js.<br>基于 Node.js 的快速、简洁但功能强大的博客框架。</p>
+</blockquote>
+<p>Hexo 在 Gihub 上的主页是：<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">https://github.com/hexojs/hexo</a></p>
+<h3 id="2-_Node-js">2. Node.js</h3>
+<p>由于使用 Hexo 需要依赖 Node.js, 所以对此进行简单的介绍，直接引用百度百科的内容：</p>
+<blockquote>
+<p>Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台，用来方便地搭建快速的易于扩展的网络应用. Node.js 借助事件驱动，非阻塞 I/O 模型变得轻量和高效， 非常适合运行在分布式设备的数据密集型的实时应用. Node.js 对 Google V8 引擎(应用于 Google Chrome 浏览器)进行了封装.</p>
+</blockquote>
+<h3 id="3-_Github">3. Github</h3>
+<p>因为 Hexo 要将网站托管在 Github 上，也简单介绍下：</p>
+<blockquote>
+<p>Gist 是 Github 推出的基于 Git 的代码片段服务。用户可以提交自己的代码片段或任意的文本作，可以作为个人的代码管理库、文档管理库等。</p>
+</blockquote>
+<p>如果没有用过 Github, 先到 <a href="http://www.github.com" target="_blank" rel="external">http://www.github.com</a> 上去注册一个账户，托管博客要用到。</p>
+<h3 id="4-_Git">4. Git</h3>
+<p>Github 是 Git 的托管仓库，虽然用不到 Git 命令，但是 Hexo 也是依赖 Git 的。</p>
+<blockquote>
+<p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。[4]<br>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。<br>Torvalds 开始着手开发 Git 是为了作为一种过渡方案来替代 BitKeeper，后者之前一直是 Linux 内核开发人员在全球使用的主要源代码工具。</p>
+</blockquote>
+<p>如果使用 Windows 的童鞋，还请先到 <a href="http://git-scm.com/" target="_blank" rel="external">http://git-scm.com/</a> 下载 Git 客户端，Mac 本身自带 git, 用 Linux 的童鞋应该是比较专业的，就不介绍了。</p>
+<h2 id="搭建博客：">搭建博客：</h2>
+<p>在使用 Hexo 之前，请先安装 Node.js 以及 Git，Node.js 和 Git 都有安装包，可以到官网去下载：</p>
+<blockquote>
+<p>Node.js 官网：<a href="http://www.nodejs.org/" target="_blank" rel="external">http://www.nodejs.org/</a><br>Git 官网：<a href="http://git-scm.com" target="_blank" rel="external">http://git-scm.com</a></p>
+</blockquote>
+<p>另外说明下：因为手头只有一台 Mac，所以下面使用的命令都是在 Mac 终端的，如果使用 Windows 的话，Git 有个 <em>Git Bash</em> 的程序，是一个模拟的终端，可以执行一些命令。</p>
+<h3 id="1-_安装_Hexo">1. 安装 Hexo</h3>
+<p><strong>前提：必须先安装 Node.js！</strong> 打开终端，执行命令：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="variable">$ </span>npm install hexo -g</div></pre></figure>
+
+<p>Hexo 安装成功之后，在任意目录新建一个子目录并切换到这个目录，这就是本地的博客目录：</p>
+<figure class="highlight shell"><pre><div class="line">$ <span class="keyword">cd</span> ~</div><div class="line">$ <span class="built_in">mkdir</span> MyBlog</div><div class="line">$ <span class="keyword">cd</span> MyBlog</div></pre></figure>
+
+<p>初始化本地博客目录：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="variable">$ </span>hexo init</div><div class="line"><span class="variable">$ </span>npm install</div></pre></figure>
+
+<p>至此，本地的博客就搭建好了，是不是超简单 ^_^！<br>如果要本地查看博客，继续执行下面的命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo <span class="keyword">server</span>   <span class="comment">// 启动本地服务器</span></div></pre></figure>
+
+<p>然后打开浏览器，在地址栏输入：localhost:4000，你就可以喉嗨尚的看到你的博客了～～～</p>
+<blockquote>
+<p>按下快捷键：<code>CTRL + D</code> 可以退出本地服务器</p>
+</blockquote>
+<h2 id="托管博客到_Github">托管博客到 Github</h2>
+<p>尽管在本来浏览器中可已访问自己的博客了，但这仅仅只是一个单机版。如果要在整个互联网上发布直接的博客，需要有服务器托管，下面介绍如果托管直接的 Hexo 博客到 Github 上。</p>
+<p><strong>前提：需在 <a href="http://www.github.com" target="_blank" rel="external">Github</a> 上注册</strong>！</p>
+<p>登录 Github，创建已仓库(repositories), 名字为：<code>USERNAME</code>.github.io，如图：</p>
+<p><img src="/img/github_create.png" alt="github_create"></p>
+<p>仓库创建好之后，可以查看；如上图 <code>Your repositories</code> 对应的列表中点击 <em>rakkang.github.io</em> 可以打开仓库主页。要上传项目到仓库，还要在 Github 的 <code>Settings</code> 中添加自己的 SSH Key。</p>
+<p><img src="/img/github_sshkey.png" alt="github_sshkey"></p>
+<p>Github 仓库建好，设置项配置好之后，打开终端，进入博客目录：</p>
+<figure class="highlight shell"><pre><div class="line">$ <span class="built_in">cd</span> ~/MyBlog</div></pre></figure>
+
+<p>生成博客的静态网页，并部署到 Github:</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo generate <span class="comment">// 生成静态网页</span></div></pre></figure>
+
+<p>在部署之前，还要配置下 Hexo 的服务器地址，打开 <code>~/MyBlog/_config.yml</code> 在文件的最后面，找到并编辑以下的内容：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="preprocessor"># Deployment</span></div><div class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="title">deploy</span>:</div><div class="line">  <span class="typedef"><span class="keyword">type</span>: github    <span class="comment">------&gt; 直接填写 github</span></span></div><div class="line">  repository: https://github.com/rakkang/rakkang.github.io.git   <span class="comment">-----&gt; Github 的仓库地址</span></div><div class="line">  brach: master</div></pre></figure>
+
+<p>保存，在终端运行以下部署命令：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="variable">$ </span>hexo deploy</div></pre></figure>
+
+<blockquote>
+<p>Hexo 提供了简化的命令：</p>
+</blockquote>
+<figure class="highlight shell"><pre><div class="line">hexo g = hexo generate  <span class="comment">// 生成</span></div><div class="line">hexo d = hexo deploy    <span class="comment">// 部署</span></div><div class="line">hexo s = hexo <span class="keyword">server</span>    <span class="comment">// 运行服务器</span></div></pre></figure>
+
+<p>首次运行部署命令可能会报以下的错误：</p>
+<figure class="highlight"><pre><div class="line">Initialized empty Git repository <span class="keyword">in</span> /Users/kang/temp/.deploy/.git/</div><div class="line">*** Please tell <span class="keyword">me</span> who you are.</div><div class="line"></div><div class="line">Run</div><div class="line"></div><div class="line">  git config --<span class="keyword">global</span> user.email <span class="string">"you@example.com"</span></div><div class="line">  git config --<span class="keyword">global</span> user.name <span class="string">"Your Name"</span></div><div class="line"></div><div class="line"><span class="keyword">to</span> <span class="keyword">set</span> your account<span class="comment">'s default identity.</span></div><div class="line">Omit --<span class="keyword">global</span> <span class="keyword">to</span> <span class="keyword">set</span> the identity only <span class="keyword">in</span> this repository.</div><div class="line"></div><div class="line">fatal: unable <span class="keyword">to</span> <span class="keyword">auto</span>-detect email address (got <span class="comment">'kang@ruikye.(none)')</span></div></pre></figure>
+
+<p>这是因为没配置 Git 的提交用户信息，可以通过下面的命令配置：</p>
+<figure class="highlight shell"><pre><div class="line">$ git config user<span class="class">.email</span> <span class="attr_selector">[你的邮箱]</span></div><div class="line">$ git config user<span class="class">.name</span> <span class="attr_selector">[提交用户名]</span> <span class="comment">// 名字可以随便写</span></div></pre></figure>
+
+<p>配置后在运行部署命令，成功后会出现以下的信息：</p>
+<figure class="highlight shell"><pre><div class="line"><span class="keyword">To</span> https:<span class="comment">//github.com/rakkang/rakkang.github.io.git</span></div><div class="line">   a796df0..<span class="number">4</span>d4cb79  master -&gt; master</div><div class="line">Branch master <span class="keyword">set</span> up <span class="keyword">to</span> track remote branch master <span class="keyword">from</span> https:<span class="comment">//github.com/rakkang/rakkang.github.io.git.</span></div><div class="line">[info] Deploy done: github</div></pre></figure>
+
+<p>部署后，在浏览器地址输入：<code>USERNAME</code>.github.io <em>(eg: <a href="http://rakkang.github.io" target="_blank" rel="external">rakkang.github.io</a>)</em> 就可以打开线上的博客了，至此部署完成。</p>
+<h2 id="写博客、发布文章">写博客、发布文章</h2>
+<p>新建一篇博客，执行下面的命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo <span class="built_in">new</span> <span class="built_in">post</span> <span class="string">"article title"</span></div></pre></figure>
+
+<p>这条命令会在你的博客目录的 source/_posts 下生成一个 article-title.md 的文件，用编辑器打开就可以编辑文章了。</p>
+<blockquote>
+<p>Hexo 使用的 Markdown 语法，这里推荐几种编写 Markdown 的编辑器：<br>Window: <a href="http://www.markdownpad.com/" target="_blank" rel="external">MarkdownPad2</a><br>Mac: <a href="http://www.mouapp.com/" target="_blank" rel="external">Mou</a><br>Linux: <a href="http://sourceforge.net/p/retext/home/ReText/" target="_blank" rel="external">ReText</a><br>个人推荐的方式是：Sublime Text + MarkdownEditting(插件)</p>
+</blockquote>
+<p>文章编辑好之后，运行生成、部署命令：</p>
+<figure class="highlight shell"><pre><div class="line">$ hexo g   <span class="comment">// 生成</span></div><div class="line">$ hexo d   <span class="comment">// 部署</span></div></pre></figure>
+
+<p>在浏览器中刷新博客，就可以看到，由于 Github 的缓存机制，可能要多刷新几次才能看到。</p>
+<blockquote>
+<p>如果要删除文章，直接删除 srouce/_post 下对应文章的文件夹，然后重新 <code>生成</code>、<code>部署</code> 就可以了。</p>
+</blockquote>
+<h2 id="参考：">参考：</h2>
+<p>【1】：<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">https://github.com/hexojs/hexo</a><br>【2】：<a href="http://zipperary.com/categories/hexo/" target="_blank" rel="external">http://zipperary.com/categories/hexo/</a></p>
+]]></content>
+    
+    
+      <category term="Hexo" scheme="http://www.ruikye.com/tags/Hexo/"/>
+    
+      <category term="Hexo" scheme="http://www.ruikye.com/categories/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Java 单例模式]]></title>
+    <link href="http://www.ruikye.com/2014/08/28/Java-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://www.ruikye.com/2014/08/28/Java-单例模式/</id>
+    <published>2014-08-28T14:55:07.000Z</published>
+    <updated>2015-01-18T09:01:28.000Z</updated>
+    <content type="html"><![CDATA[<ol>
+<li>私有化构造函数（饿汉模式）：    </li>
+</ol>
+<figure class="highlight java"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1</span> </span>{</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton1 sIntance = <span class="keyword">new</span> Singleton1();</div><div class="line"> </div><div class="line">  <span class="keyword">private</span> <span class="title">Singleton1</span>(){</div><div class="line">   }</div><div class="line"> </div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton1 <span class="title">getInstance</span>(){</div><div class="line">      <span class="keyword">return</span> sIntance;</div><div class="line">   }</div><div class="line">}</div></pre></figure>
+
+<ol>
+<li>私有化构造函数，并提供静态获获取实例方法（懒汉模式）：</li>
+</ol>
+<figure class="highlight java"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton sInstance;</div><div class="line"> </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span>() {</div><div class="line">     }</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>(){</div><div class="line">        <span class="keyword">if</span>(sInstance == <span class="keyword">null</span>){</div><div class="line">             sInstance = <span class="keyword">new</span> Singleton();</div><div class="line">         }</div><div class="line"> </div><div class="line">        <span class="keyword">return</span> sInstance;</div><div class="line">     }</div><div class="line">}</div></pre></figure>
+
+<ol>
+<li><p>单元素 Enum 类型实现单列（强烈推荐）：</p>
+<p>参考：《Effective Java》, 推荐使用该方法，理由如下：</p>
+<ul>
+<li>绝对的局唯一，可以序列化</li>
+<li>绝对的预防反射攻击</li>
+<li>绝对的简洁</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton {</div><div class="line">    INSTANCE;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomthing</span>(){</div><div class="line">        Log.d(<span class="string">"Sigleton"</span> , <span class="string">"This is a single instace!"</span> );</div><div class="line">     }</div><div class="line">}</div></pre></figure>
+
+<ol>
+<li><p>利用 JVM 类加载机制（多线程）：  </p>
+<p>我们知道 JVM 加载类时只会加载一次，可以利用此特性实现单例。优点：</p>
+<ul>
+<li>可以多线程使用</li>
+<li>绝对唯一</li>
+<li>不调用 getInstance 不会实例化</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{</div><div class="line">     <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span> </span>{</div><div class="line">         <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div><div class="line">     }</div><div class="line"> </div><div class="line">     <span class="keyword">private</span> <span class="title">Singleton</span>(){</div><div class="line">     }</div><div class="line"> </div><div class="line">     <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>() {</div><div class="line">         <span class="keyword">return</span> Holder. instance;</div><div class="line">     }</div><div class="line">}</div></pre></figure>
+
+]]></content>
+    
+    
+      <category term="Java" scheme="http://www.ruikye.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://www.ruikye.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[AsyncTask 的使用]]></title>
+    <link href="http://www.ruikye.com/2014/08/28/AsyncTask-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://www.ruikye.com/2014/08/28/AsyncTask-的使用/</id>
+    <published>2014-08-28T11:50:20.000Z</published>
+    <updated>2014-08-30T09:17:04.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>AsyncTask是 Android 提供的在 UI 线程处理耗时操作的类，内部的实现原理是 Thread + Handle 的方式。AsyncTask 是用于处理耗时不是很长的异步操作（一般秒级的操作比较合适）；如果要执行时间很长的或者循环的异步任务，推荐使用其他的多线程 API, 比如：Thread, FetureTask, ThreadPoolExecutor。</p>
+</blockquote>
+<p>AsyncTask 是 Android 很重要的工具类，历史版本修改次数比较多，不同版本之间的区别也比较大：</p>
+<blockquote>
+<p><strong><em>Android 1.5:</em></strong><br>AsyncTask 底层是使用唯一的线程来执行任务的，任务按顺序执行，一个执行完再执行下一个</p>
+<p><strong><em>Android 1.6:</em></strong><br>AsyncTask 使用线程池并行执行任务，执行顺序无法保证</p>
+<p><strong><em>Android 3.0:</em></strong><br>从 Android 3.0 开始，又改为默认按顺序执行，一个接着一个执行。但是增加了一个函数来支持多线程并发执行：AsyncTask#executeOnExecutor (Executor, Params)</p>
+</blockquote>
+<p>下面来介绍最近的版本，Android 4.2 SDK中的：</p>
+<blockquote>
+<p>4.2 默认是按顺序执行的，同时支持多线程并发执行</p>
+</blockquote>
+<figure class="highlight java"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CORE_POOL_SIZE = <span class="number">5</span>; <span class="comment">//5个核心线程</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_POOL_SIZE = <span class="number">128</span>; <span class="comment">//最多分配128个线程</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> KEEP_ALIVE = <span class="number">1</span>; <span class="comment">//非核心线程空闲超时1s,自动销毁</span></div><div class="line"><span class="comment">//当无空闲核心线程时，新任务添加到消息队列；消息队列填满时，再启动新的线程</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> BlockingQueue&lt;Runnable&gt; sPoolWorkQueue = </div><div class="line">truetruetruetruetruetruenew LinkedBlockingQueue&lt;Runnable&gt;(<span class="number">10</span>);<span class="comment">//等待消息队列</span></div><div class="line"><span class="comment">// 并行任务执行器</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Executor THREAD_POOL_EXECUTOR</div><div class="line">           = <span class="keyword">new</span> ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, </div><div class="line">           		KEEP_ALIVE, TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);</div><div class="line"><span class="comment">// 顺序任务执行器</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Executor SERIAL_EXECUTOR = <span class="keyword">new</span> SerialExecutor();</div><div class="line"><span class="comment">// 默认使用顺序任务执行器</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Executor sDefaultExecutor = SERIAL_EXECUTOR;</div></pre></figure>
+
+<h4 id="新添加_AsyncTask_任务时，可能出现的_4_中情况：">新添加 AsyncTask 任务时，可能出现的 4 中情况：</h4>
+<ol>
+<li><p><strong>有空闲的核心线程时：</strong>直接使用空闲的核心线程执行异步任务  </p>
+</li>
+<li><p><strong>没有空闲的核心线程，但缓存队列未满时：</strong>新任务被添加到缓冲队列</p>
+</li>
+<li><p><strong>没有空闲的核心线程，缓冲队列已满，但线程数没到上线时：</strong>创建新的线程执行异步任务</p>
+</li>
+<li><p><strong>线程池中已满128个线程时：</strong>抛出 <em>RejectedExecutionException</em></p>
+</li>
+</ol>
+<h4 id="其他注意点：">其他注意点：</h4>
+<ol>
+<li><p>由于 AsyncTask 内部的线程池是 <em>static</em> 类型，整个进程共用一个线程池；如果使用不当，会产生阻塞问题，尤其是单任务顺序执行的情况下，一个任务执行时间过长会阻塞其他任务的执行</p>
+</li>
+<li><p><em>static</em> 线程另外一个问题是，如果第一次调用 AsyncTask 在非 UI 线程中，那么以后使用 AsyncTask时，onPosExecute 也会在非 UI 线程中，此时如果执行 UI 操作会 Crash，所以第一次使用 AsyncTask 一定要在 UI 线程中使用，尤其是使用第三方 SDK 时要注意这点 </p>
+</li>
+<li><p>通常使用 AsyncTask 是在 Activity 中使用匿名的内部类来使用，内部类的一个问题是会保持外部类的实例，如果 AsyncTask 中的异步任务在 Activity 退出时还没执行完或者阻塞了，那么这个保持的外部的 Activity 实例得不到释放，会引起 OOM 问，解决办法是：在 AsyncTask 使用弱引用外部实例，或者保证在 Activity 退出时，所有的 AsyncTask 已执行完成或被取消 </p>
+</li>
+</ol>
+]]></content>
+    
+    
+      <category term="Android" scheme="http://www.ruikye.com/tags/Android/"/>
+    
+      <category term="Android" scheme="http://www.ruikye.com/categories/Android/"/>
+    
+  </entry>
+  
+</feed>

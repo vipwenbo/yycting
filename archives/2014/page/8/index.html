@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 8 页 | 归档：2014 | Ruikye</title>
+  <meta name="author" content="零雨の夜">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Ruikye"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="shortcut icon">
+  <link rel="alternate" href="/atom.xml" title="Ruikye" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="/img/favicon.ico" rel="icon" type="image/x-ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="nav-top">
+  <div class="alignleft main-title">
+  <h1><a href="/">Ruikye</a></h1>
+    <h2></h2>
+  </div>
+  <nav id="main-nav" class="alignright">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">存档</a></li>
+      
+      <li> <a href="/atom.xml">RSS</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">2014</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-30T08:14:20.000Z"><a href="/2014/08/30/SublimeText-Plugins/">14/8月/242</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/30/SublimeText-Plugins/">Sublime Text 推荐插件</a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        
+        <blockquote>
+<p>Sublime Text 是一个代码编辑器（Sublime Text 2是收费软件，但可以无限期试用），也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。—- 百度百科</p>
+</blockquote>
+<h4 id="1-_Package_Control">1. <a href="https://github.com/wbond/sublime_package_control" target="_blank" rel="external">Package Control</a></h4>
+<p>Package Control 是 Sublime Text 管理其他插件的工具，可以实现在线安装、删除插件等功能。</p>
+<p>安装方法，打开 Sublime Text，按快捷键 <code>CTRL+反引号</code> 调出控制台(<em>Console</em>), 输入以下代码 ：</p>
+<pre><code>Sublime <span class="built_in">Text</span> <span class="number">2</span> 安装代码：
+</code></pre><blockquote>
+<p>import urllib2,os; pf=’Package Control.sublime-package’; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), ‘wb’ ).write( urllib2.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ +pf.replace( ‘ ‘,’%20’ )).read()); print( ‘Please restart Sublime Text to finish installation’)</p>
+</blockquote>
+<pre><code>Sublime <span class="built_in">Text</span> <span class="number">3</span> 安装代码：
+</code></pre><blockquote>
+<p>import urllib.request,os; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), ‘wb’).write(urllib.request.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ + pf.replace(‘ ‘,’%20’)).read())</p>
+</blockquote>
+<pre><code>手动安装
+</code></pre><blockquote>
+<p>可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：</p>
+<ol>
+<li>点击Preferences &gt; Browse Packages菜单<ol>
+<li>进入打开的目录的上层目录，然后再进入Installed Packages/目录</li>
+<li>下载Package Control.sublime-package并复制到Installed Packages/目录</li>
+<li>重启Sublime Text。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p> 安装完成后，可以使用<code>CTRL(CMD)+SHIFT+P</code>快捷键打开控制面板，输入: <em>package control</em> 。</p>
+<h4 id="2-_SideBarEnhancements">2. <a href="https://github.com/titoBouzout/SideBarEnhancements" target="_blank" rel="external">SideBarEnhancements</a></h4>
+<p>直接使用 Package Control 安装，SideBarEnhancements是 Sublime Text中强大的 Sidebar 插件，Sublime Text 本身的 Sidebar 提供的右键菜单非常简陋，有 SideBarEnhancements 之后，可以实现很多使用的功能，比如：在文件浏览器中打开文件等。</p>
+<h4 id="3-_ConvertToUTF8">3. <a href="https://github.com/seanliang/ConvertToUTF8" target="_blank" rel="external">ConvertToUTF8</a></h4>
+<p>直接使用 Package Control 安装。Sublime Text 本对中文支持不太好，如果直接打开 GBK 编码格式的文件会出现乱码的情况，ConvertToUTF8 可以将 GBK 等其他的编码文件转换为 UTF8 显示，解决中文乱码问题。</p>
+<blockquote>
+<p>通过本插件，您可以编辑并保存目前编码不被 Sublime Text 支持的文件，特别是中日韩用户使用的 GB2312，GBK，BIG5，EUC-KR，EUC-JP 等。ConvertToUTF8 同时支持 Sublime Text 2 和 3。 ——- ConvertToUTF8 官方介绍</p>
+</blockquote>
+<h4 id="4-_JsFormat">4. <a href="https://github.com/jdc0589/JsFormat" target="_blank" rel="external">JsFormat</a></h4>
+<p>直接使用 Package Control 安装。JsFormat 顾名思义，是一个可以格式化 JavaScript 代码的插件（也可以格式化Json），格式化是文件名必须保存问 *.js 或 *.json, 这样插件才能识别出代码。</p>
+<h4 id="5-_Markdown_Preview">5. <a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="external">Markdown Preview</a></h4>
+<p>直接使用 Package Control 安装。Markdown Preview 是一个支持 Markdown 标记语言的插件，Sublime Text 本身是支持 Markdown 的，但是显示不太美观。同时， Markdown Preview 还支持导出 HTML 或者在浏览器中打开预览。</p>
+<p>使用方法：</p>
+<blockquote>
+<p>打开控制面板（<code>CTRL+SHIFT+P</code>），输入: <em>markdown preview</em> 就可看到相关的命令了。</p>
+</blockquote>
+<h4 id="6-_MarkdownEditing">6. <a href="https://github.com/SublimeText-Markdown/MarkdownEditing" target="_blank" rel="external">MarkdownEditing</a></h4>
+<p>直接使用 Package Control 安装。MardownEditing 是一款功能更加强大的 Markdown 插件。最大的特色是支持 <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank" rel="external">GFM</a> ( GitHub flavored Markdown) 代码高亮。</p>
+<blockquote>
+<p>Markdown plugin for Sublime Text. Provides a decent Markdown color scheme (light and dark) with more robust syntax highlighting and useful Markdown editing features for Sublime Text. 3 flavors are supported: Standard Markdown, GitHub flavored Markdown, MultiMarkdown. </p>
+</blockquote>
+<h4 id="7-_Spacegray">7. <a href="https://github.com/kkga/spacegray" target="_blank" rel="external">Spacegray</a></h4>
+<p>直接使用 Package Control 安装。Spacegray 是一款高大上的 Sublime Text 主题。有 Ocean Dark、 Ocean Light 和 Eighties Dark 三中主题。</p>
+<p>其他的插件还有：<a href="https://github.com/SublimeText/Tag" target="_blank" rel="external">Tag</a>, <a href="https://github.com/condemil/Gist" target="_blank" rel="external">Gist</a>, <a href="https://github.com/wbond/sublime_alignment" target="_blank" rel="external">Alignment</a>, <a href="https://github.com/alienhard/SublimeAllAutocomplete" target="_blank" rel="external">All AutoComplete</a> 等等…</p>
+
+      
+    </div>
+    <footer>
+      
+  
+  <div class="categories">
+    <a href="/categories/Software/">Software</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Sublime-Text/">Sublime Text</a>
+  </div>
+
+        <div class="alignright">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  
+
+  <nav id="pagination">
+  
+    <a href="/archives/2014/page/7/" class="alignleft prev">上一页</a><br/>
+  
+  
+    <a href="/archives/2014/page/9/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="introduction">
+    <div align="center">
+        <img class="favicon" src="/img/favicon.gif" alt="Favicon" />
+        <h4>零雨の夜&nbsp;<img class="gender" src="/img/man.jpg" alt="男" /></h4>
+        <a href="http://github.com/rakkang"><img class="follow" src="/img/github.jpg" /></a>
+        <a href="http://weibo.com/rakkang/profile?rightmod=1&wvr=5&mod=personinfo"><img class="follow" src="/img/weibo.gif" /></a>
+        <a href="/atom.xml"><img class="follow" src="/img/rss_s.png" /></a>
+    </div>
+    <p>简介：目前就职于<a href="http://www.baidu.com">百度</a>，关注移动应用开发</p>
+    <p>Email：<a href="mailto:kang.ruikye@gmail.com">kang.ruikye@gmail.com</a></p>
+</div>
+
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:ruikye.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/01/18/python-study/">Python 学习笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/15/androidpendingintent/">Android PendingIntent 的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/31/github_domain/">Github 的域名绑定</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/yanhuayilen/">《烟花易冷》故事</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/java_random_serial/">Java 随机序列算法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_ndk/">使用 Android Studio 进行 NDK 开发</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_so/">Android Studio 添加 lib*.so 文件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/github-gist/">Github·Gist使用攻略</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/SublimeText-Plugins/">Sublime Text 推荐插件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/Hexo-搭建个人博客-·-进阶篇/">Hexo 搭建个人博客 · 进阶篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">Hexo 搭建个人博客 · 基础篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/Java-单例模式/">Java 单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/AsyncTask-的使用/">AsyncTask 的使用</a>
+      </li>
+    
+
+    
+      <li>
+        <a href="/all_article">&rsaquo;&rsaquo;&nbsp;更多文章...</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Android/">Android</a><small>4</small></li>
+  
+    <li><a href="/categories/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>1</small></li>
+  
+    <li><a href="/categories/Software/">Software</a><small>2</small></li>
+  
+    <li><a href="/categories/文字/">文字</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Studio/" style="font-size: 15.00px;">Android Studio</a><a href="/tags/Gist/" style="font-size: 10.00px;">Gist</a><a href="/tags/Github/" style="font-size: 15.00px;">Github</a><a href="/tags/Hexo/" style="font-size: 15.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Python/" style="font-size: 10.00px;">Python</a><a href="/tags/Sublime-Text/" style="font-size: 10.00px;">Sublime Text</a><a href="/tags/烟花易冷/" style="font-size: 10.00px;">烟花易冷</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div id="foot-nav">
+  <ul class="social">
+    
+      <li><a class="github" href="https://github.com/rakkang" title="github">github</a></li>
+    
+      <li><a class="rss" href="/atom.xml" title="rss">rss</a></li>
+    
+  </ul>
+</div>
+<div>
+  
+  &copy; 2015 零雨の夜 , Themes <a href="https://github.com/DaiXiang/hexo-theme-BsLight">BsLight</a>&nbsp;|&nbsp; 
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253165997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253165997' type='text/javascript'%3E%3C/script%3E"));</script>
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+  function navbar() {
+    var top = $('#nav-top').innerHeight();
+    $('#header').css('min-height', top);
+  }
+  navbar();
+  $(window).resize(navbar);
+</script>
+<div id="totop" class="footer-btn">
+  <a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script type="text/javascript">
+  $(function(){ 
+	// When to show the scroll link
+	// higher number = scroll link appears further down the page   
+	var upperLimit = 800;
+	
+	// Our scroll link element
+	var scrollElem = $('#totop');
+   
+	// Scroll to top speed
+	var scrollSpeed = 500;
+   
+	// Show and hide the scroll to top link based on scroll position   
+	scrollElem.hide();
+	$(window).scroll(function () {            
+		var scrollTop = $(document).scrollTop();       
+		if ( scrollTop > upperLimit ) {
+		  $(scrollElem).stop().fadeTo(300, 1); // fade back in
+		  $(scrollElem).animate({bottom: "50px"}, { queue: false, duration: 10 });
+		} else {
+		  $(scrollElem).stop().fadeTo(300, 0); // fade out
+	      $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+			
+		}
+	});
+
+	// Scroll to top animation on click
+	$(scrollElem).click(function(){
+	  $('html, body').animate({scrollTop:0}, scrollSpeed);
+	  $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+	  return false;
+	});
+  });
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ruikye"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</body>
+</html>

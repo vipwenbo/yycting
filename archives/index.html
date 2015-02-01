@@ -1,0 +1,637 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>归档 | Ruikye</title>
+  <meta name="author" content="零雨の夜">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Ruikye"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="shortcut icon">
+  <link rel="alternate" href="/atom.xml" title="Ruikye" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="/img/favicon.ico" rel="icon" type="image/x-ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="nav-top">
+  <div class="alignleft main-title">
+  <h1><a href="/">Ruikye</a></h1>
+    <h2></h2>
+  </div>
+  <nav id="main-nav" class="alignright">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">存档</a></li>
+      
+      <li> <a href="/atom.xml">RSS</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">归档</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+        <div class="icon"></div>
+        <time datetime="2015-01-18T08:25:08.000Z"><a href="/2015/01/18/python-study/">15/1月/18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/01/18/python-study/">Python 学习笔记</a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        
+        <h3 id="1-_内置函数：">1. 内置函数：</h3>
+<ul>
+<li><p>dir(object)</p>
+<blockquote>
+<p>获取 <em>object</em> 的所有属性</p>
+</blockquote>
+</li>
+<li><p>help(object)</p>
+<blockquote>
+<p>获取 <em>object</em> 的帮助文档并附带解释说明</p>
+</blockquote>
+</li>
+<li><p>map(func, list)</p>
+<blockquote>
+<p>对 <em>list</em> 中得每个元素执行 <em>func</em> 函数并将结果列表返回</p>
+</blockquote>
+</li>
+<li><p>filter(func, list)</p>
+<blockquote>
+<p>对 <em>list</em> 中的每个元素执行 <em>func</em> 函数，如果列表元素执行 <em>func</em> 返回 True, 则添加到返回的列表中 </p>
+</blockquote>
+</li>
+<li><p>reduce(func, list)</p>
+<blockquote>
+<p><em>func</em> 要求是一个两个参数的函数，先将 <em>list</em> 中得 [0],[1]应用 <em>func</em> ,然后将得到的结果与 [3] 一起在应用 <em>func</em>，之后一次规则递归调用 </p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">reduce((<span class="keyword">lambda</span> x,y: x+y),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>])  <span class="comment"># 相当于：(((1+2)+5)+7)+9</span></div></pre></figure>
+
+<ul>
+<li>type(var)<blockquote>
+<p>返回变了 <em>var</em> 的类型 </p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">type(<span class="number">3</span>)  <span class="comment"># 结果：&lt;type, 'int'&gt;</span></div></pre></figure>
+
+<ul>
+<li>range(var<type 'int'="">)<blockquote>
+<p>返回一个 [0, 1, 2 … var-1] 的序列</p>
+</blockquote>
+</type></li>
+</ul>
+<figure class="highlight python"><pre><div class="line">rang(<span class="number">5</span>)  <span class="comment"># 结果：[0, 1, 2, 3, 4]</span></div></pre></figure>
+
+<ul>
+<li>enumerate(&lt;可便利对象&gt;)<blockquote>
+<p>返回的是一个包含两个元素的定值表(tuple)，两个元素分别赋予 index 和 value</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">S = <span class="string">'abcdefghijk'</span></div><div class="line"><span class="keyword">for</span> (index,char) <span class="keyword">in</span> enumerate(S):</div><div class="line">    <span class="keyword">print</span> index</div><div class="line">    <span class="keyword">print</span> char</div></pre></figure>
+
+<ul>
+<li>zip(list1, list2, …)<blockquote>
+<p>从多个等长的序列中，依次各取出一个元素。每次取出的(来自不同列表的)元素合成一个元组</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">ta = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">tb = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>]</div><div class="line">tc = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> (a,b,c) <span class="keyword">in</span> zip(ta,tb,tc):</div><div class="line">    print(a,b,c)</div></pre></figure>
+
+<h3 id="2-_数据结构：">2. 数据结构：</h3>
+<ul>
+<li>tuple(元组)</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">tupleA = (<span class="number">1</span>, <span class="string">'a'</span>, <span class="number">35</span>, [<span class="string">'a'</span>,<span class="number">3</span>])      <span class="comment"># tuple中得元素可以是不同的任意类型</span></div></pre></figure>
+
+
+
+<ul>
+<li>list(列表)</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">listA = [<span class="number">3</span>, <span class="string">'b'</span>, <span class="number">45</span>, [<span class="number">4</span>, <span class="string">'abc'</span>, <span class="number">4</span>]] <span class="comment"># list中得元素可以是不同的任意类型</span></div><div class="line"></div><div class="line"><span class="comment"># 常用方法</span></div><div class="line">listA.count(<span class="number">5</span>)             <span class="comment"># 计数，看总共有多少个5</span></div><div class="line">listA.index(<span class="number">3</span>)             <span class="comment"># 查询 nl 的第一个3的下标</span></div><div class="line">listA.append(<span class="number">6</span>)            <span class="comment"># 在 nl 的最后增添一个新元素6</span></div><div class="line">listA.sort()               <span class="comment"># 对nl的元素排序</span></div><div class="line">listA.pop()                <span class="comment"># 从nl中去除最后一个元素，并将该元素返回。</span></div><div class="line">listA.remove(<span class="number">2</span>)            <span class="comment"># 从nl中去除第一个2</span></div><div class="line">listA.insert(<span class="number">0</span>,<span class="number">9</span>)          <span class="comment"># 在下标为0的位置插入9</span></div><div class="line"><span class="keyword">del</span> listA[<span class="number">0</span>]               <span class="comment"># 删除下标为0的元素</span></div></pre></figure>
+
+<font color="ff0000">1. tuple和list的区别：一旦建立，tuple的各个元素不可再变更，而list的可以再变更<br>2. 字符串是一种特殊的元素</font>
+
+<h4 id="tuple_和_list_的引用方式：">tuple 和 list 的引用方式：</h4>
+<blockquote>
+<ol>
+<li><strong>下标引用，格式：s[下标]</strong> 如果下标<0,则为倒序索引<br></0,则为倒序索引<br></li>
+<li><strong>范围引用：格式：s[下限:上限:步长]</strong> 不包括上限元素本身</li>
+</ol>
+</blockquote>
+<figure class="highlight python"><pre><div class="line">s[:<span class="number">5</span>]         <span class="comment"># 从开始到下标为4的子列表</span></div><div class="line">s[<span class="number">2</span>:]         <span class="comment"># 从下标2到最后的子列表</span></div><div class="line">s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">2</span>]      <span class="comment"># 从下标0到下标4，每隔2取一个元素(下标为0，2，4的元素)</span></div><div class="line">s[<span class="number">2</span>:<span class="number">0</span>:-<span class="number">1</span>]     <span class="comment"># 从下标2到下标1</span></div></pre></figure>
+
+<ul>
+<li>dic(字典)</li>
+</ul>
+<figure class="highlight python"><pre><div class="line">dic = {<span class="string">'key1'</span>:<span class="number">1</span>, <span class="string">'key2'</span>:<span class="string">'string'</span>, <span class="string">'key3'</span>:[<span class="number">5</span>, <span class="string">'abc'</span>]}</div><div class="line"></div><div class="line"><span class="comment"># 遍历</span></div><div class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic:</div><div class="line">    <span class="keyword">print</span> dic[key],<span class="string">' '</span></div><div class="line"><span class="comment"># 输出：[5, 'abc'] string 1</span></div><div class="line"></div><div class="line"><span class="comment"># 常用方法</span></div><div class="line">dic.keys()           <span class="comment"># 返回dic所有的键</span></div><div class="line">dic.values()         <span class="comment"># 返回dic所有的值</span></div><div class="line">dic.items()          <span class="comment"># 返回dic所有的元素（键值对）</span></div><div class="line">dic.clear()          <span class="comment"># 清空dic所有的元素（键值对）</span></div><div class="line"><span class="keyword">del</span> dic[<span class="string">'key1'</span>]      <span class="comment"># 删除 dic 的‘key1’元素</span></div></pre></figure>
+
+<h3 id="3-_面向对象：">3. 面向对象：</h3>
+<ul>
+<li>类的定义</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(self ...)</span>:</span> <span class="comment"># 方法的第一个参数必须是self</span></div><div class="line">  ...</div></pre></figure>
+
+<ul>
+<li>__init__方法<blockquote>
+<p>创建对象时，Python会自动调用 <em>__init__</em>,这个过程也叫初始化<br>添加类的属性，可以在__init__中设置</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span><span class="params">()</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.attr1 = []</div><div class="line">        self.attr2 = {}</div><div class="line">        self.attr3 = <span class="number">5</span></div></pre></figure>
+
+<ul>
+<li>对象的性质<br>通过 <em>self</em>.[attribute] 的方式可以给对象添加性质，性质是属于对象不是类共有的。</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_gender)</span>:</span></div><div class="line">        self.gender = input_gender</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printGender</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> self.gender</div><div class="line"></div><div class="line">li_lei = Human(<span class="string">'male'</span>)</div><div class="line"><span class="keyword">print</span> li_lei.gender</div><div class="line">li_lei.printGender()</div></pre></figure>
+
+<ul>
+<li>运算符是特殊方法</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="string">"+"</span>            <span class="comment">#对应 __add()__</span></div><div class="line"><span class="string">"-"</span>            <span class="comment">#对应 __sub()__</span></div></pre></figure>
+
+<h3 id="4-_文本文件的输入输出">4. 文本文件的输入输出</h3>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 使用</span></div><div class="line">f = open(<span class="string">'filename'</span>, <span class="string">'mode'</span>) <span class="comment"># MODE: 'r' 只读，‘w' 写入</span></div><div class="line"></div><div class="line"><span class="comment"># 常用方法</span></div><div class="line">f.read(N)                    <span class="comment"># 读取N bytes的数据</span></div><div class="line">f.readline()                 <span class="comment"># 读取一行</span></div><div class="line">f.readlines()                <span class="comment"># 读取所有行，储存在列表中，每个元素是一行。</span></div><div class="line">f.write(<span class="string">'I like apple'</span>)      <span class="comment"># 将'I like apple'写入文件</span></div><div class="line">f.close()                    <span class="comment"># 关闭文件</span></div></pre></figure>
+
+<h3 id="5-_模块(module)">5. 模块(module)</h3>
+<blockquote>
+<p>模块的作用是为了代码重用。在Python中，一个.py文件就构成一个模块。</p>
+</blockquote>
+<ul>
+<li>模块的导入：</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="keyword">import</span> moduleA             <span class="comment"># 普通导入方式，使用 moduleA 中的函数：moduleA.func()</span></div><div class="line"><span class="keyword">import</span> a <span class="keyword">as</span> moduleA        <span class="comment"># 导入模块moduleA，并将模块a重命名为b，使用：a.func()</span></div><div class="line"><span class="keyword">from</span> moduleA <span class="keyword">import</span> func   <span class="comment"># 从模块a中引入func, 可以直接使用func()</span></div><div class="line"><span class="keyword">from</span> moduleA <span class="keyword">import</span> *      <span class="comment"># 从模块a中引入所有对象</span></div></pre></figure>
+
+<ul>
+<li><p>搜索路径：<br>  Python会在以下路径中搜索它想要寻找的模块：</p>
+<ul>
+<li>程序所在的文件夹</li>
+<li>标准库的安装路径</li>
+<li><p>操作系统环境变量 $PYTHONPATH 所包含的路径</p>
+<p>自定义的模块或下载的模块，可以放在相应的路径，以便Python可以找到。</p>
+</li>
+</ul>
+</li>
+<li><p>模块包：</p>
+<blockquote>
+<p>将很多模块模块放在同一个文件夹（比如：dir）中，构成一个模块包。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="keyword">import</span> dir.module     <span class="comment"># 导入 dir 模块包中得 module 模块</span></div></pre></figure>
+
+<pre><code>模块包中必须包含一个<span class="command">\_</span><span class="command">\_</span>init<span class="command">\_</span><span class="command">\_</span>.py的文件，标记该文件夹为一个模块包。<span class="command">\_</span><span class="command">\_</span>init<span class="command">\_</span><span class="command">\_</span>.py可以是一个空文件。
+</code></pre><h3 id="6-_函数参数">6. 函数参数</h3>
+<ul>
+<li>按位置传递：</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,c)</span>:</span></div><div class="line">    <span class="keyword">return</span> a+b+c</div><div class="line"></div><div class="line">print(f(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))          <span class="comment"># 位置传递</span></div></pre></figure>
+
+<ul>
+<li>关键字传递：<blockquote>
+<p>关键字(keyword)传递是根据每个参数的名字传递参数</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,c)</span>:</span></div><div class="line">    <span class="keyword">return</span> a+b+c</div><div class="line"></div><div class="line">print(f(c=<span class="number">3</span>,b=<span class="number">2</span>,a=<span class="number">1</span>))    <span class="comment"># 关键字传递</span></div><div class="line">print(f(<span class="number">1</span>,c=<span class="number">3</span>,b=<span class="number">2</span>))      <span class="comment"># 位置和关键字混合传递，位置参数要在前面</span></div></pre></figure>
+
+<ul>
+<li>参数默认值：<blockquote>
+<p>定义函数的时候，可以给参数赋予默认值(default)。如果该参数最终没有被传递值，将使用该默认值</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,c=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="keyword">return</span> a+b+c</div><div class="line"></div><div class="line">print(f(<span class="number">3</span>,<span class="number">2</span>))            <span class="comment"># 参数 c 使用默认值</span></div><div class="line">print(f(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>))          <span class="comment"># 参数 c 不使用默认值</span></div></pre></figure>
+
+<ul>
+<li><p>包裹传递：</p>
+<blockquote>
+<p>在定义函数时，我们有时候并不知道调用的时候会传递多少个参数。这时候，包裹(packing)位置参数，或者包裹关键字参数，来进行参数传递</p>
+</blockquote>
+<ul>
+<li>包裹位置传递</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*name)</span>:</span></div><div class="line">    <span class="keyword">print</span> type(name)</div><div class="line">    <span class="keyword">print</span> name</div><div class="line"></div><div class="line"><span class="comment"># 在 func 的参数表中，所有的参数被name收集，根据位置合并成一个元组(tuple)</span></div><div class="line">func(<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>)</div><div class="line">func(<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</div></pre></figure>
+
+<pre><code>- 包裹关键字传递
+&gt;包裹传递的关键在于定义函数时，在相应元组或字典前加 \<span class="keyword">*</span> 或 \<span class="keyword">*</span>\<span class="keyword">*</span>。
+</code></pre><figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(**dict)</span>:</span></div><div class="line">    <span class="keyword">print</span> type(dict)</div><div class="line">    <span class="keyword">print</span> dict  </div><div class="line"></div><div class="line">func(a=<span class="number">1</span>,b=<span class="number">9</span>)</div><div class="line">func(m=<span class="number">2</span>,n=<span class="number">1</span>,c=<span class="number">11</span>)</div></pre></figure>
+
+<ul>
+<li>解包裹：<blockquote>
+<p>所谓的解包裹，就是在传递tuple(或dict)时，让tuple的每一个元素(或dict的每一个关键字)对应一个位置参数</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a,b,c)</span>:</span></div><div class="line">    <span class="keyword">print</span> a,b,c</div><div class="line"></div><div class="line">args = (<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>)</div><div class="line">func(*args)           <span class="comment"># 把元组 args 拆成分散的三个元素，分别传递给a,b,c</span></div><div class="line"></div><div class="line">dict = {<span class="string">'a'</span>:<span class="number">1</span>,<span class="string">'b'</span>:<span class="number">2</span>,<span class="string">'c'</span>:<span class="number">3</span>}</div><div class="line">func(**dict)          <span class="comment"># 让词典(dict)的每个键值对作为一个关键字传递给func</span></div></pre></figure>
+
+<ul>
+<li>混合<blockquote>
+<font color="FF0000">先位置，再关键字，再包裹位置，再包裹关键字</font>
+
+</blockquote>
+</li>
+</ul>
+<h3 id="7-_循环对象">7. 循环对象</h3>
+<blockquote>
+<p>循环对象是这样一个对象，它包含有一个 <strong>next()</strong> 方法(__next__()方法，在python 3x中)， 这个方法的目的是进行到下一个结果，而在结束一系列结果之后，举出 <strong>StopIteration</strong> 错误。</p>
+<font color="FF0000"><strong>循环对象和迭代器常常相互指代对方</strong></font>
+
+</blockquote>
+<figure class="highlight python"><pre><div class="line">f = open(<span class="string">'test.txt'</span>)</div><div class="line"><span class="keyword">print</span> f.next()   <span class="comment"># 输出第一行内容</span></div><div class="line"><span class="keyword">print</span> f.next()   <span class="comment"># 输出第二行内容</span></div><div class="line"></div><div class="line"><span class="comment"># 按行读取文本文件</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'test.txt'</span>):</div><div class="line">    <span class="keyword">print</span> line</div></pre></figure>
+
+<ul>
+<li>生成器：<blockquote>
+<p>生成器(generator)的主要目的是构成一个用户自定义的循环对象。</p>
+<p>生成器的编写方法和函数定义类似，只是在return的地方改为yield。生成器中可以有多个yield。当生成器遇到一个yield时，会暂停运行生成器，返回yield后面的值。当再次调用生成器的时候，会从刚才暂停的地方继续运行，直到下一个yield。生成器自身又构成一个循环器，每次循环使用一个yield返回的值。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 自定义生成器</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></div><div class="line">    a = <span class="number">100</span></div><div class="line">    <span class="keyword">yield</span> a         <span class="comment"># 第一次循环</span></div><div class="line">    a = a*<span class="number">8</span></div><div class="line">    <span class="keyword">yield</span> a         <span class="comment"># 第二次循环</span></div><div class="line">    <span class="keyword">yield</span> <span class="number">1000</span>      <span class="comment"># 第三次循环</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">        <span class="keyword">yield</span> i</div><div class="line"></div><div class="line"><span class="comment"># 简写方式</span></div><div class="line">G = (x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">4</span>))  <span class="comment"># 生成器表达式(Generator Expression)</span></div></pre></figure>
+
+<ul>
+<li>表推导：<blockquote>
+<p>表推导(list comprehension)是快速生成表的方法</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 生成列表 L</span></div><div class="line">L = []</div><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">    L.append(x**<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 使用表推导生成列表 L</span></div><div class="line">L = [x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</div></pre></figure>
+
+<h3 id="8-_异常处理">8. 异常处理</h3>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 捕捉异常格式</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    ...</div><div class="line"><span class="keyword">except</span> exception1:</div><div class="line">    ...</div><div class="line"><span class="keyword">except</span> exception2:</div><div class="line">    ...</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    ...</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    ...</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    ...</div></pre></figure>
+
+<blockquote>
+<font color="FF0000"><strong>try -&gt; 异常 -&gt; except -&gt; finally<br>try -&gt; 无异常 -&gt; else -&gt; finally</strong></font>
+
+</blockquote>
+<figure class="highlight python"><pre><div class="line"><span class="comment"># 抛出异常格式</span></div><div class="line"><span class="keyword">print</span> <span class="string">'Lalala'</span></div><div class="line"><span class="keyword">raise</span> StopIteration</div><div class="line"><span class="keyword">print</span> <span class="string">'Hahaha'</span></div></pre></figure>
+
+<h1 id="Python_标准库">Python 标准库</h1>
+<h3 id="1-_Python增强：">1. Python增强：</h3>
+<ul>
+<li><p>文字处理</p>
+<ul>
+<li>string包：字符串处理</li>
+<li>re包：正则表达式</li>
+<li>textwrap包：富文本处理</li>
+</ul>
+</li>
+<li><p>数据对象</p>
+<ul>
+<li>copy包：对象复制</li>
+</ul>
+</li>
+<li><p>日期和时间：</p>
+<ul>
+<li>time包：时间处理</li>
+<li>datetime包：日期与时间处理</li>
+</ul>
+</li>
+<li><p>数学运算：</p>
+<ul>
+<li>decimal包</li>
+<li>fractions包</li>
+<li>random包：随机数处理</li>
+<li>math包：数学常数与函数</li>
+<li>numpy包：数组运算</li>
+</ul>
+</li>
+<li><p>存储：</p>
+<ul>
+<li>sqlite3包：sqlite 数据库处理</li>
+<li>pickle包：二进制文件处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-_系统交互：">2. 系统交互：</h3>
+<ul>
+<li><p>Python运行控制：</p>
+<ul>
+<li>sys包：管理Python自身的运行环境</li>
+</ul>
+</li>
+<li><p>操作系统：</p>
+<ul>
+<li>os包：Python与操作系统的接口</li>
+<li>subprocess包：用于执行外部命令</li>
+</ul>
+</li>
+<li><p>线程与进程：</p>
+<ul>
+<li>threading包：支持多线程</li>
+<li>multiprocessing包：支持多进程</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-_网络编程：">3. 网络编程：</h3>
+<ul>
+<li><p>基于socket层的网络应用：</p>
+<ul>
+<li>socket包：socket网络处理库</li>
+<li>SocketServer包：socket服务器管理</li>
+<li>asyncore包：异步处理</li>
+</ul>
+</li>
+<li><p>互联网应用：</p>
+<ul>
+<li>BaseHTTPServer包：http协议相关</li>
+<li>urllib包：URL处理</li>
+<li>urllib2包：URL处理</li>
+<li>urlparse包：URL处理</li>
+</ul>
+</li>
+</ul>
+<h1 id="说明">说明</h1>
+<p>参考：<a href="http://www.cnblogs.com/vamei/tag/Python/" target="_blank" rel="external">Python快速教程</a></p>
+
+      
+    </div>
+    <footer>
+      
+  
+  <div class="categories">
+    <a href="/categories/Python/">Python</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Python/">Python</a>
+  </div>
+
+        <div class="alignright">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  
+
+  <nav id="pagination">
+  
+  
+    <a href="/archives/page/2/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="introduction">
+    <div align="center">
+        <img class="favicon" src="/img/favicon.gif" alt="Favicon" />
+        <h4>零雨の夜&nbsp;<img class="gender" src="/img/man.jpg" alt="男" /></h4>
+        <a href="http://github.com/rakkang"><img class="follow" src="/img/github.jpg" /></a>
+        <a href="http://weibo.com/rakkang/profile?rightmod=1&wvr=5&mod=personinfo"><img class="follow" src="/img/weibo.gif" /></a>
+        <a href="/atom.xml"><img class="follow" src="/img/rss_s.png" /></a>
+    </div>
+    <p>简介：目前就职于<a href="http://www.baidu.com">百度</a>，关注移动应用开发</p>
+    <p>Email：<a href="mailto:kang.ruikye@gmail.com">kang.ruikye@gmail.com</a></p>
+</div>
+
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:ruikye.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/01/18/python-study/">Python 学习笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/15/androidpendingintent/">Android PendingIntent 的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/31/github_domain/">Github 的域名绑定</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/yanhuayilen/">《烟花易冷》故事</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/java_random_serial/">Java 随机序列算法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_ndk/">使用 Android Studio 进行 NDK 开发</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_so/">Android Studio 添加 lib*.so 文件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/github-gist/">Github·Gist使用攻略</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/SublimeText-Plugins/">Sublime Text 推荐插件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/Hexo-搭建个人博客-·-进阶篇/">Hexo 搭建个人博客 · 进阶篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">Hexo 搭建个人博客 · 基础篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/Java-单例模式/">Java 单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/AsyncTask-的使用/">AsyncTask 的使用</a>
+      </li>
+    
+
+    
+      <li>
+        <a href="/all_article">&rsaquo;&rsaquo;&nbsp;更多文章...</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Android/">Android</a><small>4</small></li>
+  
+    <li><a href="/categories/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>1</small></li>
+  
+    <li><a href="/categories/Software/">Software</a><small>2</small></li>
+  
+    <li><a href="/categories/文字/">文字</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Studio/" style="font-size: 15.00px;">Android Studio</a><a href="/tags/Gist/" style="font-size: 10.00px;">Gist</a><a href="/tags/Github/" style="font-size: 15.00px;">Github</a><a href="/tags/Hexo/" style="font-size: 15.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Python/" style="font-size: 10.00px;">Python</a><a href="/tags/Sublime-Text/" style="font-size: 10.00px;">Sublime Text</a><a href="/tags/烟花易冷/" style="font-size: 10.00px;">烟花易冷</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div id="foot-nav">
+  <ul class="social">
+    
+      <li><a class="github" href="https://github.com/rakkang" title="github">github</a></li>
+    
+      <li><a class="rss" href="/atom.xml" title="rss">rss</a></li>
+    
+  </ul>
+</div>
+<div>
+  
+  &copy; 2015 零雨の夜 , Themes <a href="https://github.com/DaiXiang/hexo-theme-BsLight">BsLight</a>&nbsp;|&nbsp; 
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253165997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253165997' type='text/javascript'%3E%3C/script%3E"));</script>
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+  function navbar() {
+    var top = $('#nav-top').innerHeight();
+    $('#header').css('min-height', top);
+  }
+  navbar();
+  $(window).resize(navbar);
+</script>
+<div id="totop" class="footer-btn">
+  <a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script type="text/javascript">
+  $(function(){ 
+	// When to show the scroll link
+	// higher number = scroll link appears further down the page   
+	var upperLimit = 800;
+	
+	// Our scroll link element
+	var scrollElem = $('#totop');
+   
+	// Scroll to top speed
+	var scrollSpeed = 500;
+   
+	// Show and hide the scroll to top link based on scroll position   
+	scrollElem.hide();
+	$(window).scroll(function () {            
+		var scrollTop = $(document).scrollTop();       
+		if ( scrollTop > upperLimit ) {
+		  $(scrollElem).stop().fadeTo(300, 1); // fade back in
+		  $(scrollElem).animate({bottom: "50px"}, { queue: false, duration: 10 });
+		} else {
+		  $(scrollElem).stop().fadeTo(300, 0); // fade out
+	      $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+			
+		}
+	});
+
+	// Scroll to top animation on click
+	$(scrollElem).click(function(){
+	  $('html, body').animate({scrollTop:0}, scrollSpeed);
+	  $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+	  return false;
+	});
+  });
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ruikye"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</body>
+</html>

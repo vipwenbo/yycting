@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 4 页 | 归档：2014/8 | Ruikye</title>
+  <meta name="author" content="零雨の夜">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Ruikye"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="shortcut icon">
+  <link rel="alternate" href="/atom.xml" title="Ruikye" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="/img/favicon.ico" rel="icon" type="image/x-ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="nav-top">
+  <div class="alignleft main-title">
+  <h1><a href="/">Ruikye</a></h1>
+    <h2></h2>
+  </div>
+  <nav id="main-nav" class="alignright">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">存档</a></li>
+      
+      <li> <a href="/atom.xml">RSS</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">2014/8</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-30T08:55:46.000Z"><a href="/2014/08/30/androidstudio_ndk/">14/8月/242</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/30/androidstudio_ndk/">使用 Android Studio 进行 NDK 开发</a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        
+        <p>Android Studio 中添加已编译的 *.so 在 <em><a href="../androidstudio_so">Android Studio 添加 lib*.so 文件</a></em> 中进行了介绍。这篇文章介绍如何直接在 Android Studio 中编写 NDK 代码并在打包 APK 时自动编译。</p>
+<p>在 Android Studio 中开 NDK 主要做三件事：</p>
+<blockquote>
+<ol>
+<li>在 <em>local.properties</em> 配置 ndk.dir</li>
+<li>在 <em>build.gradle</em> 中配置 NDK 模块，即 C++ 工程</li>
+<li>添加 C++ 代码文件到指定的目录，如：<em>\<module\> / [app] / [src] / [main] / [jni]</module\></em></li>
+<li>(可选)多同平台(<em>不同的CPU架构</em>)编译</li>
+</ol>
+</blockquote>
+<h2 id="1-_在_local-properties_文件中配置_ndk-dir">1. 在 <em>local.properties</em> 文件中配置 ndk.dir</h2>
+<p>使用 Android Studio 建立的项目会在项目的根目录生成名称为 <em>local.properties</em> 文件。  </p>
+<p>配置代码：</p>
+<figure class="highlight java"><pre><div class="line">sdk.dir=/Users/shanee/Development/Android/sdk</div><div class="line">ndk.dir=/Users/shanee/Development/ndk</div></pre></figure>
+
+<h2 id="2-_在_build-gradle_中配置_NDK_模块">2. 在 <em>build.gradle</em> 中配置 NDK 模块</h2>
+<p><em>build.gradle</em> 示例配置：</p>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">    compileSdkVersion <span class="number">19</span></div><div class="line">    buildToolsVersion <span class="string">"20.0.0"</span></div><div class="line"></div><div class="line">    defaultConfig {</div><div class="line">        applicationId <span class="string">"com.example.ndksample"</span></div><div class="line">        minSdkVersion <span class="number">9</span></div><div class="line">        targetSdkVersion <span class="number">19</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line"></div><div class="line">        ndk {</div><div class="line">            moduleName <span class="string">"myEpicGameCode"</span> <span class="comment">// &lt;-- This is the name of my C++ module!</span></div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="comment">// ... more gradle stuff here ...</span></div><div class="line"></div><div class="line">} <span class="comment">// end of android section</span></div></pre></figure>
+
+<p>还可以在 <em>ndk</em> 块中指定一些编译参数、依赖库等：</p>
+<figure class="highlight java"><pre><div class="line">ndk {</div><div class="line">    moduleName <span class="string">"myEpicGameCode"</span></div><div class="line">    cFlags <span class="string">"-DANDROID_NDK -D_DEBUG DNULL=0"</span>   <span class="comment">// Define some macros</span></div><div class="line">    ldLibs <span class="string">"EGL"</span>, <span class="string">"GLESv3"</span>, <span class="string">"dl"</span>, <span class="string">"log"</span>       <span class="comment">// Link with these libraries!</span></div><div class="line">    stl <span class="string">"stlport_shared"</span>                      <span class="comment">// Use shared stlport library</span></div><div class="line">}</div></pre></figure>
+
+<h2 id="3-_添加_C/C++_代码到项目">3. 添加 C/C++ 代码到项目</h2>
+<p>默认的，C++ 代码必须添加在指定的目录：</p>
+<blockquote>
+<ul>
+<li><em>[module_name]</em><ul>
+<li>············<em>[src]</em></li>
+<li>················<em>[main]</em></li>
+<li>····················<em>[jniLibs]</em> ———————- so 目录</li>
+<li>····················<em>[jni]</em> —————————- jni 代码目录</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>C/C++ 代码目录示例：</p>
+<p><img src="/img/jniPath.png" alt="jniPath">  </p>
+<p>完成以上的步骤，就可以编译了，如果 C/C++ 中代码有错误也会提示编译失败的哦。</p>
+<p>如果不想使用默认的 JNI 目录，可以在 <em>build.gradle</em> 中指定目录，在 <em>sourceSets.main</em> 块中添加脚本：</p>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">  </div><div class="line">  <span class="comment">// .. android settings ..</span></div><div class="line"></div><div class="line">  sourceSets.main {</div><div class="line">      jni.srcDirs <span class="string">'src/main/source'</span></div><div class="line">  }</div><div class="line">}</div></pre></figure>
+
+<h2 id="4-_(可选)多同平（CPU架构）台编译">4. (可选)多同平（<em>CPU架构</em>）台编译</h2>
+<p>如果要针对不同的平台分别做优化配置，也可以通过修改 <em>build.gralde</em> 脚本实现，参考配置脚本：</p>
+<figure class="highlight java"><pre><div class="line">android {</div><div class="line">  </div><div class="line">  <span class="comment">// .. android settings ..</span></div><div class="line"></div><div class="line">  productFlavors {</div><div class="line">        x86 {</div><div class="line">            ndk {</div><div class="line">                abiFilter <span class="string">"x86"</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">        arm {</div><div class="line">            ndk {</div><div class="line">                abiFilter <span class="string">"armeabi-v7a"</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">        mips {</div><div class="line">            ndk {</div><div class="line">                abiFilter <span class="string">"mips"</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">} <span class="comment">// android</span></div></pre></figure>
+
+<p>同样在 <em>ndk</em> 块中可以指定编译参数，依赖库等配置。</p>
+<blockquote>
+<p>这篇文章是从 Google+ 上的一篇帖子翻译过来的，没有示例项目的源码；原文地址：<em><a href="http://shaneenishry.com/blog/2014/08/17/ndk-with-android-studio/" target="_blank" rel="external">NDK With Android Studio</a></em>（需翻墙）.</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+  
+  <div class="categories">
+    <a href="/categories/Android/">Android</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Android/">Android</a>, <a href="/tags/Android-Studio/">Android Studio</a>
+  </div>
+
+        <div class="alignright">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  
+
+  <nav id="pagination">
+  
+    <a href="/archives/2014/08/page/3/" class="alignleft prev">上一页</a><br/>
+  
+  
+    <a href="/archives/2014/08/page/5/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="introduction">
+    <div align="center">
+        <img class="favicon" src="/img/favicon.gif" alt="Favicon" />
+        <h4>零雨の夜&nbsp;<img class="gender" src="/img/man.jpg" alt="男" /></h4>
+        <a href="http://github.com/rakkang"><img class="follow" src="/img/github.jpg" /></a>
+        <a href="http://weibo.com/rakkang/profile?rightmod=1&wvr=5&mod=personinfo"><img class="follow" src="/img/weibo.gif" /></a>
+        <a href="/atom.xml"><img class="follow" src="/img/rss_s.png" /></a>
+    </div>
+    <p>简介：目前就职于<a href="http://www.baidu.com">百度</a>，关注移动应用开发</p>
+    <p>Email：<a href="mailto:kang.ruikye@gmail.com">kang.ruikye@gmail.com</a></p>
+</div>
+
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:ruikye.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/01/18/python-study/">Python 学习笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/15/androidpendingintent/">Android PendingIntent 的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/31/github_domain/">Github 的域名绑定</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/yanhuayilen/">《烟花易冷》故事</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/java_random_serial/">Java 随机序列算法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_ndk/">使用 Android Studio 进行 NDK 开发</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/androidstudio_so/">Android Studio 添加 lib*.so 文件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/github-gist/">Github·Gist使用攻略</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/SublimeText-Plugins/">Sublime Text 推荐插件</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/Hexo-搭建个人博客-·-进阶篇/">Hexo 搭建个人博客 · 进阶篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/29/Hexo-搭建个人博客-·-基础篇/">Hexo 搭建个人博客 · 基础篇</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/Java-单例模式/">Java 单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/28/AsyncTask-的使用/">AsyncTask 的使用</a>
+      </li>
+    
+
+    
+      <li>
+        <a href="/all_article">&rsaquo;&rsaquo;&nbsp;更多文章...</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Android/">Android</a><small>4</small></li>
+  
+    <li><a href="/categories/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>1</small></li>
+  
+    <li><a href="/categories/Software/">Software</a><small>2</small></li>
+  
+    <li><a href="/categories/文字/">文字</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Studio/" style="font-size: 15.00px;">Android Studio</a><a href="/tags/Gist/" style="font-size: 10.00px;">Gist</a><a href="/tags/Github/" style="font-size: 15.00px;">Github</a><a href="/tags/Hexo/" style="font-size: 15.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Python/" style="font-size: 10.00px;">Python</a><a href="/tags/Sublime-Text/" style="font-size: 10.00px;">Sublime Text</a><a href="/tags/烟花易冷/" style="font-size: 10.00px;">烟花易冷</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div id="foot-nav">
+  <ul class="social">
+    
+      <li><a class="github" href="https://github.com/rakkang" title="github">github</a></li>
+    
+      <li><a class="rss" href="/atom.xml" title="rss">rss</a></li>
+    
+  </ul>
+</div>
+<div>
+  
+  &copy; 2015 零雨の夜 , Themes <a href="https://github.com/DaiXiang/hexo-theme-BsLight">BsLight</a>&nbsp;|&nbsp; 
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253165997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253165997' type='text/javascript'%3E%3C/script%3E"));</script>
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+  function navbar() {
+    var top = $('#nav-top').innerHeight();
+    $('#header').css('min-height', top);
+  }
+  navbar();
+  $(window).resize(navbar);
+</script>
+<div id="totop" class="footer-btn">
+  <a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script type="text/javascript">
+  $(function(){ 
+	// When to show the scroll link
+	// higher number = scroll link appears further down the page   
+	var upperLimit = 800;
+	
+	// Our scroll link element
+	var scrollElem = $('#totop');
+   
+	// Scroll to top speed
+	var scrollSpeed = 500;
+   
+	// Show and hide the scroll to top link based on scroll position   
+	scrollElem.hide();
+	$(window).scroll(function () {            
+		var scrollTop = $(document).scrollTop();       
+		if ( scrollTop > upperLimit ) {
+		  $(scrollElem).stop().fadeTo(300, 1); // fade back in
+		  $(scrollElem).animate({bottom: "50px"}, { queue: false, duration: 10 });
+		} else {
+		  $(scrollElem).stop().fadeTo(300, 0); // fade out
+	      $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+			
+		}
+	});
+
+	// Scroll to top animation on click
+	$(scrollElem).click(function(){
+	  $('html, body').animate({scrollTop:0}, scrollSpeed);
+	  $(scrollElem).animate({bottom: "-200px"}, { queue: false, duration: 10 });
+	  return false;
+	});
+  });
+</script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ruikye"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</body>
+</html>
